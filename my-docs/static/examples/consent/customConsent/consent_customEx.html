@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeotap SDK - Consent Example (Manual Set)</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; max-width: 700px; margin: auto; }
+        button { padding: 10px 15px; font-size: 1em; cursor: pointer; margin-top: 10px; margin-right: 10px; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        code { font-family: monospace; }
+        .instructions { margin-top: 20px; border: 1px solid #ccc; padding: 15px; background-color: #f9f9f9; }
+        .consent-controls { margin-bottom: 20px; }
+    </style>
+
+    <!-- 1. Zeotap SDK Integration Snippet -->
+    <script type="text/javascript">
+      !function(e,t){var n=t.createElement("script");n.type="text/javascript",n.crossorigin="anonymous",n.async=!0,n.src="https://content.zeotap.com/sdk/qa/zeotap.min.js",n.onload=function(){};var s=t.getElementsByTagName("script")[0];s.parentNode.insertBefore(n,s);function o(e,t,n){function s(t){e[t]=function(){e[n].push([t].concat(Array.prototype.slice.call(arguments,0)))}}for(var o=0;o<t.length;o++)s(t[o])}var r=e.zeotap||{_q:[],_qcmp:[]};o(r,["init","setEventProperties","setUserProperties","setPageProperties","setMetaProperties","setUserIdentities","unsetUserIdentities","setZI"],"_q"),o(r,["setConsent","addAskForConsentActionListener"],"_qcmp"),e.zeotap=r}(window,document);
+    </script>
+
+    <!-- 2. Initialize the SDK -->
+    <script type="text/javascript">
+      // IMPORTANT: Replace "YOUR_WRITE_KEY" with your actual Zeotap Write Key
+      const writeKey = "YOUR_WRITE_KEY";
+
+      // Initialize WITH consent management enabled, but disable auto CMP check
+      const sdkOptions = {
+        useConsent: true,          // Enable consent features
+        checkForCMP: false,        // Disable automatic TCF CMP detection
+      };
+
+      window.zeotap.init(writeKey, sdkOptions);
+      console.log("Zeotap SDK Initialized (Consent Enabled, Manual Set Mode).");
+    </script>
+</head>
+<body>
+
+    <h1>Zeotap SDK: Consent Example (Manual <code>setConsent</code>)</h1>
+
+    <p>This page demonstrates using the <code>setConsent</code> method to manually provide consent signals to the SDK, typically after a user interacts with a custom consent banner.</p>
+    <p>The SDK is initialized with <code>useConsent: true</code> and <code>checkForCMP: false</code>.</p>
+    <p>The SDK requires consent for **track** for tracking in this example.</p>
+
+    <div class="consent-controls">
+        <h3>Simulate Consent Action:</h3>
+        <button id="allowButton">Allow track</button>
+        <button id="denyButton">Deny track</button>
+    </div>
+
+    <button id="eventButton">'Test Event' (Requires track)</button>
+
+    <div class="instructions">
+        <h3>How to Verify</h3>
+        <ol>
+            <li>Click "Allow Track". Check the console for the `setConsent` call.</li>
+            <li>Click "'Test Event'". Check the **Network** tab. The event request **should be sent** because consent for track was granted.</li>
+            <li>Click "Deny track". Check the console for the `setConsent` call.</li>
+            <li>Click "'Test Event'" again. Check the **Network** tab. The event request should **NOT** be sent because consent for track was revoked.</li>
+        </ol>
+    </div>
+
+    <!-- 3. Script to handle the button clicks -->
+    <script>
+        // --- Consent Button Handlers ---
+        document.getElementById('allowButton').addEventListener('click', function() {
+          
+            window.zeotap.setConsent({track: true});
+            console.log("Called window.zeotap.setConsent (Allowing track)");
+        });
+
+        document.getElementById('denyButton').addEventListener('click', function() {
+          
+          window.zeotap.setConsent({track: false});
+          console.log("Called window.zeotap.setConsent (Denying track)");
+      });
+
+        // --- Track Event Button Handler ---
+        document.getElementById('eventButton').addEventListener('click', function() {
+            const eventName = 'Test Event';
+            const eventProps = { scenario: 'Manual Set Consent', timestamp: Date.now() };
+
+            // Call track - SDK will internally check consent based on `setConsent` calls
+            window.zeotap.setEventProperties(eventName, eventProps);
+
+            // Log to console for verification
+            console.log(`Called window.zeotap.setEventProperties('${eventName}') with:`, eventProps);
+        });
+    </script>
+
+</body>
+</html>

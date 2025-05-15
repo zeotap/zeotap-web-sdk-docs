@@ -1,0 +1,8 @@
+{
+  "label": "Consent Resolution",
+  "position": 5,
+  "link": {
+    "type": "doc",
+    "id": "consentStrategy" 
+  }
+}

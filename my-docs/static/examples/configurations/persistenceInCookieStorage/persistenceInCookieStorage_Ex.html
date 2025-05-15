@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeotap SDK - persistenceInCookieStorage Example</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; max-width: 700px; margin: auto; }
+        button { padding: 10px 15px; font-size: 1em; cursor: pointer; margin-top: 10px; }
+        pre { background-color: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+        code { font-family: monospace; }
+        .instructions { margin-top: 20px; border: 1px solid #ccc; padding: 15px; background-color: #f9f9f9; }
+        .instructions h3 { margin-top: 0; }
+        .instructions ul { margin-top: 0; padding-left: 20px; }
+    </style>
+
+    <!-- 1. Zeotap SDK Integration Snippet -->
+    <script type="text/javascript">
+      !function(e,t){var n=t.createElement("script");n.type="text/javascript",n.crossorigin="anonymous",n.async=!0,n.src="https://content.zeotap.com/sdk/qa/zeotap.min.js",n.onload=function(){};var s=t.getElementsByTagName("script")[0];s.parentNode.insertBefore(n,s);function o(e,t,n){function s(t){e[t]=function(){e[n].push([t].concat(Array.prototype.slice.call(arguments,0)))}}for(var o=0;o<t.length;o++)s(t[o])}var r=e.zeotap||{_q:[],_qcmp:[]};o(r,["init","setEventProperties","setUserProperties","setPageProperties","setMetaProperties","setUserIdentities","unsetUserIdentities","setZI"],"_q"),o(r,["setConsent","addAskForConsentActionListener"],"_qcmp"),e.zeotap=r}(window,document);
+    </script>
+
+    <!-- 2. Initialize the SDK -->
+    <script type="text/javascript">
+      // IMPORTANT: Replace "YOUR_WRITE_KEY" with your actual Zeotap Write Key
+      const writeKey = "YOUR_WRITE_KEY";
+
+      // Configure SDK to use Cookie Storage for cross-subdomain persistence
+      const sdkOptions = {
+        persistenceInCookieStorage: true, // Use cookie storage instead of sessionStorage
+      };
+
+      window.zeotap.init(writeKey, sdkOptions);
+    </script>
+</head>
+<body>
+
+    <h1>Zeotap SDK: <code>persistenceInCookieStorage</code> Example</h1>
+
+    <p>This page demonstrates initializing the Zeotap SDK with <code>persistenceInCookieStorage: true</code> and a specified <code>domain</code>.</p>
+    <p>When you click the button, <code>setUserIdentities</code> will be called. Because of the configuration, the SDK should store identity information in **Cookies** associated with the domain <code><code id="domainDisplay"></code></code>, rather than in Local Storage.</p>
+
+    <button id="storeIdentityButton">Set User Identity (Store in Cookies)</button>
+
+    <div class="instructions">
+        <h3>How to Verify</h3>
+        <p>After clicking the button:</p>
+        <ol>
+            <li>Open your browser's Developer Tools (usually F12).</li>
+            <li>Navigate to the "Application" tab (in Chrome/Edge) or "Storage" tab (in Firefox).</li>
+            <li>
+                **Check Cookies:**
+                <ul>
+                    <li>Expand the "Cookies" section in the left panel.</li>
+                    <li>Select the origin corresponding to this page (or the domain you set, e.g., <code>your-main-domain.com</code>).</li>
+                    <li>Look for cookies with names starting like `zpstorage` (e.g., `zpstorage_*_identity`). You should find the identity data stored here.</li>
+                </ul>
+            </li>
+            <li>
+                **Check Local Storage:**
+                <ul>
+                    <li>Expand the "Local Storage" section.</li>
+                    <li>Select the origin for this page.</li>
+                    <li>You should **NOT** find the primary Zeotap identity/consent data stored here (keys like `zpstorage_*_identity`) because `persistenceInCookieStorage` is `true`.</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <!-- 3. Script to handle the button click -->
+    <script>
+        // Display the configured domain on the page
+
+        document.getElementById('storeIdentityButton').addEventListener('click', function() {
+            // Define sample identities
+            const userIds = {
+              email: 'cookie.test@example.com',
+              userId: 'cookie-user-123'
+            };
+
+            // Call setUserIdentities
+            window.zeotap.setUserIdentities(userIds);
+
+            // Log to console for verification
+            console.log('Called window.zeotap.setUserIdentities with:', userIds);
+            alert('setUserIdentities called! Check Developer Tools (Application/Storage tab) to verify storage location (Cookies vs. Local Storage).');
+        });
+    </script>
+
+</body>
+</html>

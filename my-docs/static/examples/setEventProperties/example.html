@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeotap SDK - setEventProperties Example (E-commerce)</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        .product { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; width: 300px; }
+        .product img { max-width: 100%; height: auto; margin-bottom: 10px; }
+        .product h2 { margin-top: 0; }
+        .product p { margin-bottom: 10px; }
+        button { padding: 10px 15px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .console-output { margin-top: 20px; padding: 10px; background-color: #f0f0f0; border: 1px solid #ddd; }
+    </style>
+
+    <!-- 1. Zeotap SDK Integration Snippet -->
+    <script type="text/javascript">
+        !function(e,t){var n=t.createElement("script");n.type="text/javascript",n.crossorigin="anonymous",n.async=!0,n.src="https://content.zeotap.com/sdk/qa/zeotap.min.js",n.onload=function(){};var s=t.getElementsByTagName("script")[0];s.parentNode.insertBefore(n,s);function o(e,t,n){function s(t){e[t]=function(){e[n].push([t].concat(Array.prototype.slice.call(arguments,0)))}}for(var o=0;o<t.length;o++)s(t[o])}var r=e.zeotap||{_q:[],_qcmp:[]};o(r,["init","setEventProperties","setUserProperties","setPageProperties","setMetaProperties","setUserIdentities","unsetUserIdentities","setZI"],"_q"),o(r,["setConsent","addAskForConsentActionListener"],"_qcmp"),e.zeotap=r}(window,document);
+    </script>
+
+    <!-- 2. Initialize the SDK -->
+    <script type="text/javascript">
+        // IMPORTANT: Replace "YOUR_WRITE_KEY" with your actual Zeotap Write Key
+        const writeKey = "YOUR_WRITE_KEY";
+        window.zeotap.init(writeKey);
+    </script>
+
+</head>
+<body>
+
+    <h1>Simple E-commerce Product Page</h1>
+
+    <div class="product" id="product-1">
+        <img src="../../img/product1.png" alt="Good Couch">
+        <h2>Good Couch</h2>
+        <p>Product ID: COUCH-001</p>
+        <p>Price: $49.99</p>
+        <p>A truly good couch that will change your life!</p>
+        <button onclick="addToCart('COUCH-001', 'Good Couch', 49.99, 1)">Add to Cart</button>
+    </div>
+
+    <div class="product" id="product-2">
+        <img src="../../img/product2.png" alt="Super Sofa">
+        <h2>Super Sofa</h2>
+        <p>Product ID: Sofa-XYZ</p>
+        <p>Price: $29.75</p>
+        <p>This Sofa is super useful for all your daily needs.</p>
+        <button onclick="addToCart('SOFA-XYZ', 'Super Sofa', 29.75, 1)">Add to Cart</button>
+    </div>
+
+    <div class="console-output" id="consoleOutput">
+        <p>Console output will appear here...</p>
+    </div>
+
+    <script>
+        // Function to log messages to our on-page console
+        function logToPage(message) {
+            const outputDiv = document.getElementById('consoleOutput');
+            const p = document.createElement('p');
+            p.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+            outputDiv.appendChild(p);
+            console.log(message); // Also log to browser console
+        }
+
+
+        // Function to handle "Add to Cart"
+        function addToCart(productId, productName, price, quantity) {
+            const eventName = 'add_to_cart';
+            const eventProperties = {
+                productId: productId,
+                productName: productName,
+                price: price,
+                currency: 'USD', // Example currency
+                quantity: quantity,
+                category: 'Furniture'
+            };
+            window.zeotap.setEventProperties(eventName, eventProperties);
+            logToPage(`Attempting to track event: '${eventName}' with properties: ${JSON.stringify(eventProperties)}`);
+
+        }
+
+
+    </script>
+
+</body>
+</html>

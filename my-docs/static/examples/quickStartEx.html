@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple E-commerce Page - Zeotap SDK Demo</title>
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: auto; }
+        .product { border: 1px solid #ccc; padding: 15px; margin-bottom: 20px; }
+        .product img { max-width: 150px; float: left; margin-right: 15px; }
+        .product h2 { margin-top: 0; }
+        .actions button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .actions button:hover { background-color: #0056b3; }
+        .user-section { margin-top: 20px; padding: 10px; background-color: #f0f0f0; }
+        pre { background-color: #eee; padding: 10px; border-radius: 4px; overflow-x: auto; }
+        code { font-family: monospace; }
+        .clear { clear: both; }
+    </style>
+
+    <!-- 1. Zeotap SDK Integration -->
+    <script type="text/javascript">!function(e,t){var 
+        n=t.createElement("script");
+        n.type="text/javascript",n.crossorigin="anonymous",n.async= !0,n.src="https://content.zeotap.com/sdk/qa/zeotap.min.js",n.onload=function(){};
+        var s=t.getElementsByTagName("script") [0];
+        s.parentNode.insertBefore(n,s);
+        function o(e,t,n){function s(t){e[t]=function() {e[n].push([t].concat(Array.prototype.slice.call(arguments,0)))}}for(var o=0;o<t.length;o++)s(t[o])}var r=e.zeotap||{_q:[],_qcmp:[]};
+        o(r, 
+        ["init","setEventProperties","setUserProperties","setPageProperties","setMetaProperties ","setUserIdentities","unsetUserIdentities","setZI"],"_q"),o(r, 
+        ["setConsent","addAskForConsentActionListener"],"_qcmp"),e.zeotap=r}(window,document); </script>
+        
+        <!-- Replace with your write key -->
+        <script type="text/javascript">window.zeotap.init("YOUR_WRITE_KEY");</script>
+</head>
+<body>
+
+    <h1>Zeotap SDK E-commerce Demo</h1>
+    <p>This page demonstrates integrating the Zeotap SDK on a simple product page.</p>
+
+    <div class="product">
+        <div>
+            <img src="./img/product1.png" alt="Product Image">
+            <h2>Mod Leather Sofa</h2>
+            <p>Easy to love. The Sven in birch ivory looks cozy and refined, like a sweater that a fancy lady wears on a coastal vacation. </p>
+            <p><strong>Price:</strong> $799.99</p>
+    
+            <div class="actions">
+                <button id="viewDetailsBtn" onclick="viewDetailsAction({
+                    productId: 'p1',
+                    productName: 'Mod Leather Sofa',
+                    category: 'Furniture',
+                    price: 799.99,})">View Details</button>
+                <button id="addToCartBtn" onclick="addToCartAction({
+                    productId: 'p1',
+                    productName: 'Mod Leather Sofa',
+                    category: 'Furniture',
+                    price: 799.99,})">Add to Cart</button>
+            </div>
+            
+        </div>
+        <hr/>
+        <div>
+            <img src="./img/product1.png" alt="Product Image">
+            <h2>Mod Leather Sofa</h2>
+            <p>Easy to love. The Sven in birch ivory looks cozy and refined, like a sweater that a fancy lady wears on a coastal vacation. </p>
+            <p><strong>Price:</strong> $799.99</p>
+    
+            <div class="actions">
+                <button id="viewDetailsBtn" onclick="viewDetailsAction({
+                    productId: 'p2',
+                    productName: 'Mod Leather Sofa',
+                    category: 'Furniture',
+                    price: 799.99,})">View Details</button>
+                <button id="addToCartBtn" onclick="addToCartAction({
+                    productId: 'p2',
+                    productName: 'Mod Leather Sofa',
+                    category: 'Furniture',
+                    price: 799.99,})">Add to Cart</button>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <div class="user-section">
+        <h3>User Identification</h3>
+        <p>Simulate identifying a user (e.g., after login).</p>
+        <button id="identifyUserBtn">Identify User (user@example.com)</button>
+    </div>
+
+    <hr>
+    <h3>SDK Actions Log (Check Console)</h3>
+    <p>Check your browser's developer console (F12) to see the Zeotap SDK calls being made.</p>
+
+    <script>
+        // --- Product Data (for easy access) ---
+        const productData1 = {
+            productId: 'GADGET-PRO-123',
+            productName: 'Awesome Gadget Pro',
+            category: 'Electronics',
+            price: 199.99,
+            pageUrl: window.location.href,
+            pageName: 'Awesome Gadget Pro Product Page',
+            pageCategory: 'Product Detail'
+        };
+
+        // --- Zeotap SDK Calls ---
+
+        // 3. Identify User (Simulated)
+        document.getElementById('identifyUserBtn').addEventListener('click', function() {
+            const userIdentity = {
+                email: 'user@example.com',
+                userId: 'customer-5678', // Example internal user ID
+                // Add other identifiers like phone, etc. if available
+            };
+            window.zeotap.setUserIdentities(userIdentity);
+            console.log('Zeotap User Identity Set:', userIdentity);
+        });
+
+        // 4. Track Events
+
+        // Track "View Details" (could also be a page view event)
+        function viewDetailsAction(eventProperties) {
+            const eventName = 'Product Viewed';
+            window.zeotap.setEventProperties(eventName, eventProperties);
+            console.log(`Zeotap Event Tracked: ${eventName}`, eventProperties);
+        }
+
+        // Track "Add to Cart"
+        function addToCartAction(eventProperties) {
+            const eventName = 'Add To Cart';
+            window.zeotap.setEventProperties(eventName, eventProperties);
+            console.log(`Zeotap Event Tracked: ${eventName}`, eventProperties);
+        }
+    </script>
+
+</body>
+</html>
