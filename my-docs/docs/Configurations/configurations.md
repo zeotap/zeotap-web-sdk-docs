@@ -65,6 +65,14 @@ Only works for PIIs (cellno, email, loginid) sent using [setUserIdentities](../A
 | `gaUserIdCookieName`               | String                                   | Cookie name for the Google Analytics User ID. If set to `<value>`, the SDK looks for a cookie named `<value>`. Defaults to `''`.                                  |
 | `gaUserIdOnlyLoginEvent`           | Boolean                                  | If set to `false`, the GA User ID is sent in all event calls. If `true`, it's sent only on `setUserIdentities` calls. Defaults to `false`.                        |
 
+### Interact SDK options
+
+| Option                          | Type                                     | Description                                                                                                                                                              |
+| :--------------------------------- | :--------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <a href="../interact#web-sdk-already-integrated"> `loadInteractScript` </a>     | Boolean  | Set to `true` to automatically load the Zeotap Interact SDK alongside the main Web SDK. This enables client-side data delivery features. Defaults to `false`. |
+| <a href="../interact">`interactScriptUrl`</a>     | String  | Specifies a custom URL from which to load the Interact SDK script. If not provided, the SDK will use a default URL when `loadInteractScript` is `true`. |
+
+
 ### Logging options
 | Option                          | Type                                     | Description                                                                                                                                                              |
 | :--------------------------------- | :--------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

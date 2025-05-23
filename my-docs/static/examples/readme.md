@@ -82,10 +82,4 @@ This example is designed to get you up and running quickly with the core feature
     });
     ```
 
-## Further Learning
-
-*   **Full SDK Configuration Options**
-*   **Detailed API Reference**
-*   **Consent Management Guide**
-
 This quick start example provides a basic foundation. Explore the full documentation to understand advanced features, configuration options, and best practices for integrating the Zeotap Web SDK.

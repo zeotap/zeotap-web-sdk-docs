@@ -16,7 +16,7 @@ To install the Zeotap Web SDK, add the following script to your `<head>` of your
 ```js
     <script type="text/javascript">!function(e,t){var 
     n=t.createElement("script");
-    n.type="text/javascript",n.crossorigin="anonymous",n.async= !0,n.src="<SRC>",n.onload=function(){};
+    n.type="text/javascript",n.crossorigin="anonymous",n.async= !0,n.src="https://content.zeotap.com/sdk/zeotap.min.js",n.onload=function(){};
     var s=t.getElementsByTagName("script") [0];
     s.parentNode.insertBefore(n,s);
     function o(e,t,n){function s(t){e[t]=function() {e[n].push([t].concat(Array.prototype.slice.call(arguments,0)))}}for(var o=0;o<t.length;o++)s(t[o])}var r=e.zeotap||{_q:[],_qcmp:[]};
