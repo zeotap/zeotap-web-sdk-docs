@@ -106,11 +106,11 @@ const config = {
     //   },
     // ],
     [
-      '@docusaurus/plugin-content-docs',
+    '@docusaurus/plugin-content-docs',
       {
-        id: 'adobe',
-        path: 'docs/adobe',
-        routeBasePath: 'adobeLaunch/docs',
+        id: 'androidsdk',
+        path: 'docs/androidsdk',
+        routeBasePath: 'androidsdk/docs',
         sidebarPath: './sidebars.js',
         breadcrumbs: true,
         showLastUpdateTime: true
@@ -130,6 +130,20 @@ const config = {
     //     postsPerPage: 'ALL',
     //   },
     // ],
+    [
+      '@docusaurus/plugin-content-blog',
+      {
+        id: 'androidsdk-releases',
+        path: 'release-notes/androidsdk',
+        routeBasePath: 'androidsdk/release-notes',
+        blogTitle: 'Android SDK Release Notes',
+        blogDescription: 'Android SDK product updates and changes',
+        blogSidebarTitle: 'Recent Releases',
+        blogSidebarCount: 'ALL',
+        showReadingTime: false,
+        postsPerPage: 'ALL',
+      },
+    ],
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -268,6 +282,21 @@ const config = {
           },
           {
             href: 'https://github.com/zeotap/zeotap-web-sdk-docs/',
+            position: 'left',
+            label: 'Android SDK',
+            items: [
+              {
+                label: 'Documentation',
+                to: '/androidsdk/docs/intro',
+              },
+              {
+                label: 'Release Notes',
+                to: '/androidsdk/release-notes',
+              },
+            ],
+          },
+          {
+            href: 'https://github.com/zeotap',
             label: 'GitHub',
             position: 'right',
           },
