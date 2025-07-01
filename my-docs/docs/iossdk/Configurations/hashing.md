@@ -9,7 +9,7 @@ description: Understand how to configure PII hashing behavior using hashIdentiti
 These two configuration options work together to control how the Zeotap iOS SDK handles Personal Identifiable Information (PII) like email addresses and phone numbers when you call the `setUserIdentities` function. Correctly configuring these options is crucial for ensuring data is processed according to your intended hashing strategy.
 
 :::note PII
-These configuration only affect PIIs sent using setUserIdentities function. Recognised PIIs are cellno, email, loginid. [Learn more about PIIs](../APIReference/setUserIdentities#supported-identity-types)
+These configuration only affect PIIs sent using setUserIdentities function. Recognised PIIs are cellno, email, loginid. [Learn more about PIIs](../APIReference/setUserIdentities#pii-identifier-key-reference)
 :::
 
 ## Options Definitions
