@@ -4,7 +4,11 @@
   padding: 2rem 0;
   width: 100%;
 }
-
+.docRows {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 .featureSvg {
   height: 200px;
   width: 200px;

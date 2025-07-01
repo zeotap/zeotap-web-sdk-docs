@@ -35,7 +35,17 @@ const FeatureList = [
     buttonText: "Adobe Launch Documentation",
      redirectLink: 'adobeLaunch/docs/intro'
     
-  }
+  },
+  {
+    title: 'iOS SDK',
+    description: (
+      <>
+        iOS SDK integration.
+      </>
+    ),
+    buttonText: "iOS Documentation",
+    redirectLink: 'iossdk/docs/intro'
+  },
 ];
 
 function Feature({title, description, buttonText, redirectLink}) {
@@ -61,7 +71,7 @@ export default function HomepageFeatures() {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
+        <div className={styles.docRows}>
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}

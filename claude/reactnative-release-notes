@@ -1,0 +1,117 @@
+Version 1.3.4 (14 March 2025)
+(Android: 2.2.8, iOS: 1.3.8)
+
+
+🛠 Fixes
+
+Fixed the SetUserIdentities function mapping issue with setUserProperties.
+Version 1.3.3 (07 March 2025)
+(Android: 2.2.8, iOS: 1.3.8)
+
+
+🛠 Fixes
+
+Resolved page event caching issue on multiple requests in Android.
+Version 1.3.2 (06 March 2025)
+
+(Android: 2.2.7, iOS: 1.3.8)
+
+
+🛠 Fixes
+
+Fixed failing unit test case in integration.
+Version 1.3.1 (28 February 2025)
+(Android: 2.2.7, iOS: 1.3.8)
+
+
+🛠 Fixes
+
+Resolved function call issue on iOS.
+Version 1.3.0 (27 February 2025)
+(Android: 2.2.7, iOS: 1.3.8)
+
+
+✨ Features
+
+Introduced support for React Native's new architecture.
+Enhanced setConsent method to accept both primary and brand consent.
+Version 1.2.1
+(Android: 2.2.6, iOS: 1.3.7)
+
+
+✨ Features
+
+Added callback support for SDK initialization function.
+Version 1.2.0
+(Android: 2.2.5, iOS: 1.3.6)
+
+
+✨ Features
+
+Introduced callback support for user tracking functions.
+🔄 Changes
+
+Modified setUserProperties function to prevent data persistence.
+Version 1.1.6
+(Android: 2.2.4, iOS: 1.3.5)
+
+
+🔄 Changes
+
+Updated event name for page views on iOS.
+Version 1.1.5
+(Android: 2.2.3, iOS: 1.3.4)
+
+
+🔄 Changes
+
+Refactored SDK function arguments for consistency.
+Version 1.1.4
+(Android: 2.2.3, iOS: 1.3.2)
+
+
+🔄 Changes
+
+Removed unnecessary dependencies.
+Version 1.1.3
+(Android: 2.2.3, iOS: 1.3.2)
+
+
+✨ Features
+
+Added event names for consent and user synchronization calls.
+Version 1.1.2
+(Android: 2.2.2, iOS: 1.3.1)
+
+
+🔄 Changes
+
+Standardized handling of raw cell number identities.
+Version 1.1.1
+(Android: 2.2.1, iOS: 1.3.0)
+
+
+🛠 Fixes
+
+Addressed database closure issue on Android.
+Version 1.1.0
+(Android: 2.2.0, iOS: 1.3.0)
+
+
+✨ Features
+
+Enabled persistence of user and page properties across event tracking.
+Version 1.0.1
+(Android: 2.1.1, iOS: 1.2.0)
+
+
+🔄 Changes
+
+Refined function arguments to accept JSON inputs.
+Version 1.0.0
+(Android: 2.1.1, iOS: 1.2.0)
+
+
+🚀 Initial Release
+
+Launched the initial version of the SDK.
