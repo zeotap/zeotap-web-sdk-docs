@@ -6,7 +6,7 @@ description: Send page view events and page-specific properties to Zeotap.
 
 # Track Page View Events
 
-After integrating the SDK, you can log the users' page view events by calling `setPageProperties([String: Any])` and sending all page related information as key=value properties on the page load event. All further user events on the same page are then attached with these page properties.
+After integrating the SDK, you can log the users' page view events by calling `setPageProperties(properties)` and sending all page related information as key=value properties on the page load event. All further user events on the same page are then attached with these page properties.
 
 **Why use it?**
 
@@ -20,26 +20,30 @@ If page properties are not defined, then by default, no page property is availab
 
 ## Syntax
 
-```swift
-Collect.getInstance()?.setPageProperties(_ properties: [String: Any], _ callback: ResponseCallback?)
+```javascript
+import { setPageProperties } from 'zeo-collect';
+
+setPageProperties(properties, callback)
 ```
 
 ## Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| properties | [String: Any] | Yes | This indicates the page specific properties |
-| callback | ResponseCallback? | Optional | Callback to handle function response |
+| properties | Object | Yes | This indicates the page specific properties |
+| callback | Function | Optional | Callback to handle function response |
 
 ## Usage Examples
 
-```swift
-var pageProperties = [
-    "name": "Product Details",
-    "category": "E-commerce"
-]
+```javascript
+import { setPageProperties } from 'zeo-collect';
 
-Collect.getInstance()?.setPageProperties(pageProperties)
+const pageProperties = {
+    name: "Product Details",
+    category: "E-commerce"
+};
+
+setPageProperties(pageProperties);
 ```
 
 The detailed page properties will be passed in the payload:
@@ -67,14 +71,16 @@ The detailed page properties will be passed in the payload:
 
 You can also set page properties with Callback function as shown below. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call. 
 
-```swift
-Collect.getInstance()?.setPageProperties([
-    "name": "Product Details",
-    "category": "E-commerce"
-], {data in 
+```javascript
+import { setPageProperties } from 'zeo-collect';
+
+setPageProperties({
+    name: "Product Details",
+    category: "E-commerce"
+}, (data) => {
     // Implement function to handle response
-    // [status: "SUCCESS", message: "User identities set successfully"]
-})
+    // {status: "SUCCESS", message: "Page properties set successfully"}
+});
 ```
 
 ## Best Practices

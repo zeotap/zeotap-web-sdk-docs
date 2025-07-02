@@ -20,16 +20,18 @@ Identifiers set using `setUserIdentities()` are persisted and automatically incl
 
 ## Syntax
 
-```swift
-Collect.getInstance()?.setUserIdentities(_ identities: [String: Any], _ callback: ResponseCallback?)
+```javascript
+import { setUserIdentities } from 'zeo-collect';
+
+setUserIdentities(identities, callback)
 ```
 
 ## Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| identities | [String: Any] | Yes | A dictionary containing user identity key-value pairs |
-| callback | ResponseCallback? | Optional | Callback to handle function response |
+| identities | Object | Yes | An object containing user identity key-value pairs |
+| callback | Function | Optional | Callback to handle function response |
 
 ## Understanding Identifier Types
 
@@ -53,16 +55,19 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
 **Implementation Steps:**
 
 1.  **Configure the SDK Initialization:**
-    To use this scenario, you **must** explicitly tell the SDK *not* to perform hashing itself and confirm that the data you will provide is *not* already hashed. This is done during the `initialize` call:
+    To use this scenario, you **must** explicitly tell the SDK *not* to perform hashing itself and confirm that the data you will provide is *not* already hashed. This is done during the `initialiseZeoCollect` call:
 
-    ```swift title="SDK Initialization for Raw Identifiers"
-    var collectOptions = CollectOption()
-        .writeKey(value: "YOUR_WRITE_KEY")
-        .hashIdentities(value: false)      // Crucial: Tells the SDK *NOT* to hash the values itself.
-        .areIdentitiesHashed(value: false) // Crucial: Confirms the values you'll provide are *NOT* already hashed.
-        .build()
+    ```javascript title="SDK Initialization for Raw Identifiers"
+    import { initialiseZeoCollect } from 'zeo-collect';
 
-    Collect.initialize(option: collectOptions)
+    const options = {
+        android_write_key: "YOUR_ANDROID_WRITE_KEY",
+        ios_write_key: "YOUR_IOS_WRITE_KEY",
+        hash_identities: false,      // Crucial: Tells the SDK *NOT* to hash the values itself.
+        are_identities_hashed: false // Crucial: Confirms the values you'll provide are *NOT* already hashed.
+    };
+
+    initialiseZeoCollect(options);
     ```
     *This configuration ensures the SDK passes the raw values you provide directly to the Zeotap backend without attempting client-side hashing.*
 
@@ -72,10 +77,12 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
     **Implementation Example:**
     <details style={{marginLeft: "1rem"}}>
     <summary><strong>Email (Raw)</strong></summary>
-    ```swift title="Sending Raw Email"
-    Collect.getInstance()?.setUserIdentities([
-        "email": "example@gmail.com" // Provide the actual email address
-    ])
+    ```javascript title="Sending Raw Email"
+    import { setUserIdentities } from 'zeo-collect';
+
+    setUserIdentities({
+        email: "example@gmail.com" // Provide the actual email address
+    });
     ```
 
     The email will be passed in the payload of the network call:
@@ -104,12 +111,14 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
         <ul>
             <li>Use the standard key: <code>cellno</code>.</li>
             <li>Provide the actual, unhashed phone number string as the value.</li>
-            <li><strong>Highly Recommended Format:</strong> Use <code>'[code] [number]'</code> (e.g., <code>'11 5551234567'</code>). While the SDK sends the raw value in this scenario, this format ensures the best processing and matching on the Zeotap backend.</li>
+            <li><strong>Highly Recommended Format:</strong> Use <code>'[code] [number]'</code> (e.g., <code>'1 5551234567'</code>). While the SDK sends the raw value in this scenario, this format ensures the best processing and matching on the Zeotap backend.</li>
         </ul>
-    ```swift title="Sending Raw Cell Phone"
-    Collect.getInstance()?.setUserIdentities([
-        "cellno": "11 5551234567" // Provide the actual phone number
-    ])
+    ```javascript title="Sending Raw Cell Phone"
+    import { setUserIdentities } from 'zeo-collect';
+
+    setUserIdentities({
+        cellno: "1 5551234567" // Provide the actual phone number
+    });
     ```
 
     The `cellno` will be passed in the payload:
@@ -123,7 +132,7 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
             },
             "user": {
                 "zi": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
-                "cellno": "11 5551234567" // Raw cellno sent
+                "cellno": "1 5551234567" // Raw cellno sent
             },
             "page": { /* ... */ },
             "version": "1.3.8"
@@ -133,10 +142,12 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
     </details>
     <details style={{marginLeft: "1rem"}}>
     <summary><strong>Login ID (Raw)</strong></summary>
-    ```swift title="Sending Raw Login ID"
-    Collect.getInstance()?.setUserIdentities([
-        "loginid": "testuser" // Provide the actual login ID
-    ])
+    ```javascript title="Sending Raw Login ID"
+    import { setUserIdentities } from 'zeo-collect';
+
+    setUserIdentities({
+        loginid: "testuser" // Provide the actual login ID
+    });
     ```
 
     The `loginid` will be passed in the payload:
@@ -173,14 +184,17 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
 1.  **Configure the SDK Initialization:**
     Tell the SDK *not* to hash again and that the values you provide *are* already hashed.
 
-    ```swift title="SDK Initialization for Pre-Hashed Identifiers"
-    var collectOptions = CollectOption()
-        .writeKey(value: "YOUR_WRITE_KEY")
-        .hashIdentities(value: false)      // Optional but good practice: Tell SDK NOT to hash again.
-        .areIdentitiesHashed(value: true)  // Crucial: Tells the SDK the values ARE pre-hashed.
-        .build()
+    ```javascript title="SDK Initialization for Pre-Hashed Identifiers"
+    import { initialiseZeoCollect } from 'zeo-collect';
 
-    Collect.initialize(option: collectOptions)
+    const options = {
+        android_write_key: "YOUR_ANDROID_WRITE_KEY",
+        ios_write_key: "YOUR_IOS_WRITE_KEY",
+        hash_identities: false,      // Optional but good practice: Tell SDK NOT to hash again.
+        are_identities_hashed: true  // Crucial: Tells the SDK the values ARE pre-hashed.
+    };
+
+    initialiseZeoCollect(options);
     ```
     *This configuration ensures the SDK expects hashed keys and values.*
 
@@ -190,11 +204,13 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
     <details style={{marginLeft: "1rem"}}>
     <summary><strong>Email (Hashed)</strong></summary>
 
-    ```swift title="Sending Pre-Hashed Email (SHA-256 Lowercase)"
-    Collect.getInstance()?.setUserIdentities([
+    ```javascript title="Sending Pre-Hashed Email (SHA-256 Lowercase)"
+    import { setUserIdentities } from 'zeo-collect';
+
+    setUserIdentities({
         // SHA-256 hash of the lowercase email
-        "email_sha256_lowercase": "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2"
-    ])
+        email_sha256_lowercase: "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2"
+    });
     ```
 
     The specific hashed email key and value will be passed in the payload:
@@ -216,13 +232,15 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
     <details style={{marginLeft: "1rem"}}>
     <summary><strong>Cell Phone (Hashed)</strong></summary>
 
-    ```swift title="Sending Pre-Hashed Cell Phone (SHA-256 with Country Code)"
-    Collect.getInstance()?.setUserIdentities([
-        // SHA-256 hash of the phone including country code (e.g., '11 5551234567')
-        "cellno_with_country_code_sha256": "f6e5d4c3b2a1a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4",
+    ```javascript title="Sending Pre-Hashed Cell Phone (SHA-256 with Country Code)"
+    import { setUserIdentities } from 'zeo-collect';
+
+    setUserIdentities({
+        // SHA-256 hash of the phone including country code (e.g., '1 5551234567')
+        cellno_with_country_code_sha256: "f6e5d4c3b2a1a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4",
         // SHA-256 hash of the phone without country code (e.g., '5551234567')
-        "cellno_without_country_code_sha256": "f6e5d4c3b2a1a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4"
-    ])
+        cellno_without_country_code_sha256: "f6e5d4c3b2a1a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0c9d8e7f6a5b4"
+    });
     ```
 
     The specific hashed cell phone key and value will be passed in the payload:
@@ -246,11 +264,13 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
 
     <details style={{marginLeft: "1rem"}}>
     <summary><strong>Login ID (Hashed)</strong></summary>
-    ```swift title="Sending Pre-Hashed Login ID (SHA-256 Lowercase)"
-    Collect.getInstance()?.setUserIdentities([
+    ```javascript title="Sending Pre-Hashed Login ID (SHA-256 Lowercase)"
+    import { setUserIdentities } from 'zeo-collect';
+
+    setUserIdentities({
         // SHA-256 hash of the lowercase login ID
-        "loginid_sha256_lowercase": "g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2a3b4c5d6e7f8"
-    ])
+        loginid_sha256_lowercase: "g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2a3b4c5d6e7f8"
+    });
     ```
 
     The specific hashed login ID key and value will be passed in the payload:
@@ -287,14 +307,17 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
 1.  **Configure the SDK Initialization:**
     Enable the SDK's built-in hashing and confirm that the values you will provide are raw.
 
-    ```swift title="SDK Initialization for SDK Hashing"
-    var collectOptions = CollectOption()
-        .writeKey(value: "YOUR_WRITE_KEY")
-        .hashIdentities(value: true)       // Crucial: Tells the SDK TO perform hashing.
-        .areIdentitiesHashed(value: false) // Crucial: Confirms the values you'll provide are RAW.
-        .build()
+    ```javascript title="SDK Initialization for SDK Hashing"
+    import { initialiseZeoCollect } from 'zeo-collect';
 
-    Collect.initialize(option: collectOptions)
+    const options = {
+        android_write_key: "YOUR_ANDROID_WRITE_KEY",
+        ios_write_key: "YOUR_IOS_WRITE_KEY",
+        hash_identities: true,       // Crucial: Tells the SDK TO perform hashing.
+        are_identities_hashed: false // Crucial: Confirms the values you'll provide are RAW.
+    };
+
+    initialiseZeoCollect(options);
     ```
     *This configuration activates the SDK's internal hashing mechanism for specific PII keys.*
 
@@ -303,10 +326,12 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
 
     <details style={{marginLeft: "1rem"}}>
     <summary><strong>Email (Raw - SDK Hashes)</strong></summary>
-    ```swift title="Sending Raw Email (SDK will hash)"
-    Collect.getInstance()?.setUserIdentities([
-        "email": "user@example.com" // Provide RAW email
-    ])
+    ```javascript title="Sending Raw Email (SDK will hash)"
+    import { setUserIdentities } from 'zeo-collect';
+
+    setUserIdentities({
+        email: "user@example.com" // Provide RAW email
+    });
     ```
 
     The SDK will hash the email (SHA-256 lowercase by default) and send the hashed value in the payload:
@@ -334,10 +359,12 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
 
     <details style={{marginLeft: "1rem"}}>
     <summary><strong>Cell Phone (Raw - SDK Hashes)</strong></summary>
-    ```swift title="Sending Raw Cell Phone (SDK will hash)"
-    Collect.getInstance()?.setUserIdentities([
-        "cellno": "+1 5551234567" // Provide RAW phone in correct format
-    ])
+    ```javascript title="Sending Raw Cell Phone (SDK will hash)"
+    import { setUserIdentities } from 'zeo-collect';
+
+    setUserIdentities({
+        cellno: "1 5551234567" // Provide RAW phone in correct format
+    });
     ```
 
     The SDK will generate multiple hashes (SHA-256, MD5, SHA-1) for each representation (without country code, with country code, E.164) and send them in the payload:
@@ -353,12 +380,12 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
                     "md5": "md5_hash_of_5551234567",
                     "sha1": "sha1_hash_of_5551234567"
                 },
-                "cellno_with_country_code": { // Hashes of '11 5551234567'
+                "cellno_with_country_code": { // Hashes of '1 5551234567'
                     "sha256": "sha256_hash_of_15551234567",
                     "md5": "md5_hash_of_15551234567",
                     "sha1": "sha1_hash_of_15551234567"
                 },
-                "cellphone_number_e164": { // Hashes of '11 5551234567'
+                "cellphone_number_e164": { // Hashes of '1 5551234567'
                     "sha256": "sha256_hash_of_15551234567",
                     "md5": "md5_hash_of_15551234567",
                     "sha1": "sha1_hash_of_15551234567"
@@ -372,10 +399,12 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
 
     <details style={{marginLeft: "1rem"}}>
     <summary><strong>Login ID (Raw - SDK Hashes)</strong></summary>
-    ```swift title="Sending Raw Login ID (SDK will hash)"
-    Collect.getInstance()?.setUserIdentities([
-        "loginid": "UserLogin123" // Provide RAW login ID
-    ])
+    ```javascript title="Sending Raw Login ID (SDK will hash)"
+    import { setUserIdentities } from 'zeo-collect';
+
+    setUserIdentities({
+        loginid: "UserLogin123" // Provide RAW login ID
+    });
     ```
 
     The SDK will generate multiple standard hashes (SHA-256, MD5, SHA-1, lower/upper case) and send them nested under the `loginid` key in the payload:
@@ -410,7 +439,7 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
 | PII Property     | Key to Use if Sending RAW <br/> *(Scenarios 1 & 3)* | Key to Use if Sending PRE-HASHED <br/> *(Scenario 2 Only)*                                                                                                                                                                                             | Description & Important Notes                                                                                                                                                                                                                                                           |
 | :--------------- | :-------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Email**        | `email`                                             | `email_sha256_lowercase`,`email_sha256_uppercase`, `email_md5_lowercase`, `email_md5_uppercase`, `email_sha1_lowercase`, `email_sha1_uppercase`                                                                                      | User's email address. Use the `email` key for raw input. Use one of the specific hashed keys (like `email_sha256_lowercase`) if you provide a pre-hashed value.                                                                                                                            |
-| **Cell Phone**   | `cellno`                                            | `cellno_without_country_code_sha256`, `cellno_without_country_code_md5`, `cellno_without_country_code_sha1`, `cellno_with_country_code_sha256`, `cellno_with_country_code_md5`,`cellno_with_country_code_sha1`     | User's cell phone number. <br/> **For Raw:** Use `cellno`. **Recommended Format:** For best results, use `'+[code] [number]'` (e.g., `'+1 5551234567'`). <br/> **For Pre-Hashed:** Use the specific key matching your hash type (e.g., `cellno_with_country_code_sha256`). |
+| **Cell Phone**   | `cellno`                                            | `cellno_without_country_code_sha256`, `cellno_without_country_code_md5`, `cellno_without_country_code_sha1`, `cellno_with_country_code_sha256`, `cellno_with_country_code_md5`,`cellno_with_country_code_sha1`     | User's cell phone number. <br/> **For Raw:** Use `cellno`. **Recommended Format:** For best results, use `'[code] [number]'` (e.g., `'1 5551234567'`). <br/> **For Pre-Hashed:** Use the specific key matching your hash type (e.g., `cellno_with_country_code_sha256`). |
 | **Login ID**     | `loginid`                                           |  `loginid_sha256_lowercase`,`loginid_sha256_uppercase`, `loginid_md5_lowercase`, `loginid_md5_uppercase`, `loginid_sha1_lowercase`, `loginid_sha1_uppercase` | User's login ID. Use the `loginid` key for raw input. Use one of the specific hashed keys if you provide a pre-hashed value.                                                                                                                                                            |
 
 **How to Use This Table:**
@@ -425,39 +454,45 @@ Before using `setUserIdentities`, you must decide how PII (like email and phone 
 
 You can include any other key-value pairs representing your own first-party identifiers. These are sent as-is and are not affected by the PII hashing configurations.
 
-```swift
-Collect.getInstance()?.setUserIdentities([
+```javascript
+import { setUserIdentities } from 'zeo-collect';
+
+setUserIdentities({
     // PII Keys (Raw or Hashed depending on scenario)
-    "email": "user@example.com",
+    email: "user@example.com",
     // Custom Keys
-    "crmId": "12345-ABC",
-    "visitorId": "analytics_client_id_here"
-])
+    crmId: "12345-ABC",
+    visitorId: "analytics_client_id_here"
+});
 ```
 
 ## Set User identities with callbacks
 
 You can also set Identities with Callback function as shown below. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call. 
 
-```swift
-Collect.getInstance()?.setUserIdentities([
+```javascript
+import { setUserIdentities } from 'zeo-collect';
+
+setUserIdentities({
     // PII Keys (Raw or Hashed depending on scenario)
-    "email": "user@example.com",
+    email: "user@example.com",
     // Custom Keys
-    "crmId": "12345-ABC",
-    "visitorId": "analytics_client_id_here"
-], {data in 
+    crmId: "12345-ABC",
+    visitorId: "analytics_client_id_here"
+}, (data) => {
     // Implement function to handle response
-    // [status: "SUCCESS", message: "User identities set successfully"]
-})
+    // {status: "SUCCESS", message: "User identities set successfully"}
+});
 ```
 
 ## Removing User identities
 
 This method is used to remove user identities that are set by the `setUserIdentities` method. This will remove all the identities from the storage as well from all subsequent events that made by SDK.
 
-```swift
-Collect.getInstance()?.unSetUserIdentities()
+```javascript
+import { unSetUserIdentities } from 'zeo-collect';
+
+unSetUserIdentities();
 ```
 
 ## Best Practices

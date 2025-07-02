@@ -46,6 +46,16 @@ const FeatureList = [
     buttonText: "iOS Documentation",
     redirectLink: 'iossdk/docs/intro'
   },
+  {
+    title: 'React Native SDK',
+    description: (
+      <>
+        React Native SDK integration.
+      </>
+    ),
+    buttonText: "React Native Documentation",
+    redirectLink: 'reactnativesdk/docs/intro'
+  },
 ];
 
 function Feature({title, description, buttonText, redirectLink}) {
