@@ -120,6 +120,10 @@ Open the `.xcworkspace` file in Xcode (not the `.xcodeproj` file):
 open yourApplication.xcworkspace
 ```
 
+:::info
+To find the exact Android and iOS build versions required for a specific React Native version, please refer to the [release notes](../release-notes).
+:::
+
 ## Initialization
 
 Initialize the SDK in your app's entry point (`App.js` or `App.tsx`):
@@ -160,7 +164,7 @@ export default App;
 ```
 
 :::info
-You need to input your [```Android key and iOS write keys```](./Configurations/writeKey)  in place of ```YOUR_ANDROID_WRITE_KEY``` ```YOUR_IOS_WRITE_KEY``` so that the data gets ingested to an respective ***iOS source*** and ***Android source*** created in your Zeotap CDP account.
+You need to input your [```Android key and iOS write keys```](./Configurations/writeKey)  in place of ```YOUR_ANDROID_WRITE_KEY``` and ```YOUR_IOS_WRITE_KEY``` so that the data gets ingested to an respective ***iOS source*** and ***Android source*** created in your Zeotap CDP account.
 :::
 
 ## Setting up User Identities <span style={{"fontSize": "15px"}}>[(Learn more)](./APIReference/setUserIdentities)</span>
