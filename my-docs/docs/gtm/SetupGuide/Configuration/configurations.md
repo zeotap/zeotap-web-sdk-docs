@@ -25,7 +25,7 @@ This part focuses on how user identities are captured and managed. You'll config
 ### 4. [Google Analytics Configuration](/gtm/docs/SetupGuide/Configuration/googleAnalytics)
 If you use Google Analytics, this section allows you to configure settings to capture GA-related IDs. This can enhance reporting and enable integrations like Optimize360.
 
-### 5. ID5 Integration
+### 5. [ID5 Integration](/gtm/docs/SetupGuide/Configuration/id5)
 This section enables integration with the [ID5 Identity solution](https://www.id5.io/). It allows the Zeotap Collect Tag to collect and use the ID5 ID for identity resolution and enrichment.
 
 After completing the configuration, proceed to [set up triggers](/gtm/docs/SetupGuide/triggers) and [validate](/gtm/docs/SetupGuide/validation) your implementation.

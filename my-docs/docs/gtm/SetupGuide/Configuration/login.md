@@ -88,7 +88,6 @@ Enable this **only** if your identity values are in raw format (e.g., plain emai
 - Enable: **"Capture Loginid"**
 - Select Variable (e.g., `{{Login ID}}`)
 
-To learn more about supported hashing algorithms and formatting guidelines, [refer to our hashing guidelines](/websdk/Configurations/hashing). 
 ![Raw Identity Hashing Settings](../../../../static/img/GTM/GTM_NeedsHashing.png)
 
 ---

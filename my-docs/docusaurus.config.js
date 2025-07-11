@@ -91,20 +91,20 @@ const config = {
         showLastUpdateTime: true
       },
     ],
-    [
-      '@docusaurus/plugin-content-blog',
-      {
-        id: 'gtm-releases',
-        path: 'release-notes/gtm',
-        routeBasePath: 'gtm/release-notes',
-        blogTitle: 'GTM Release Notes',
-        blogDescription: 'GTM integration updates and changes',
-        blogSidebarTitle: 'Recent Releases',
-        blogSidebarCount: 'ALL',
-        showReadingTime: false,
-        postsPerPage: 'ALL',
-      },
-    ],
+    // [
+    //   '@docusaurus/plugin-content-blog',
+    //   {
+    //     id: 'gtm-releases',
+    //     path: 'release-notes/gtm',
+    //     routeBasePath: 'gtm/release-notes',
+    //     blogTitle: 'GTM Release Notes',
+    //     blogDescription: 'GTM integration updates and changes',
+    //     blogSidebarTitle: 'Recent Releases',
+    //     blogSidebarCount: 'ALL',
+    //     showReadingTime: false,
+    //     postsPerPage: 'ALL',
+    //   },
+    // ],
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -116,20 +116,20 @@ const config = {
         showLastUpdateTime: true
       },
     ],
-    [
-      '@docusaurus/plugin-content-blog',
-      {
-        id: 'adobe-releases',
-        path: 'release-notes/adobe',
-        routeBasePath: 'adobeLaunch/release-notes',
-        blogTitle: 'Adobe Launch Release Notes',
-        blogDescription: 'Adobe Launch integration updates and changes',
-        blogSidebarTitle: 'Recent Releases',
-        blogSidebarCount: 'ALL',
-        showReadingTime: false,
-        postsPerPage: 'ALL',
-      },
-    ],
+    // [
+    //   '@docusaurus/plugin-content-blog',
+    //   {
+    //     id: 'adobe-releases',
+    //     path: 'release-notes/adobe',
+    //     routeBasePath: 'adobeLaunch/release-notes',
+    //     blogTitle: 'Adobe Launch Release Notes',
+    //     blogDescription: 'Adobe Launch integration updates and changes',
+    //     blogSidebarTitle: 'Recent Releases',
+    //     blogSidebarCount: 'ALL',
+    //     showReadingTime: false,
+    //     postsPerPage: 'ALL',
+    //   },
+    // ],
   ],
 
   themeConfig:

@@ -35,4 +35,4 @@ Follow these steps:
 7.  **Confirm Permissions**:
     Review the API permissions requested by the template. If you agree, click **Add** to incorporate the template into your GTM workspace.
 
-After completing these steps, the Zeotap Collect Tag Template will be available in your workspace, ready for you to [configure and use](./configuration.md). 
+After completing these steps, the Zeotap Collect Tag Template will be available in your workspace, ready for you to use. 

@@ -35,4 +35,4 @@ Follow these steps to add the Zeotap Collect Tag:
 
 After selecting the Zeotap Collect Tag Template, you will need to configure its various options, such as Initialization Options, Tracking settings, Login and Identities, etc. 
 
-For detailed instructions on this, please proceed to the [**Step 3: Configure the Tag**](/gtm/docs/SetupGuide/Configuration/configureTheTag) guide. After configuration, you'll need to set up [triggers](/gtm/docs/SetupGuide/triggers) and [validate](/gtm/docs/SetupGuide/validation) your implementation. 
+For detailed instructions on this, please proceed to the [**Step 3: Configure the Tag**](/gtm/docs/SetupGuide/Configuration/configuration) guide. After configuration, you'll need to set up [triggers](/gtm/docs/SetupGuide/triggers) and [validate](/gtm/docs/SetupGuide/validation) your implementation. 

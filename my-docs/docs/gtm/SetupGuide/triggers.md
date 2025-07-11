@@ -6,7 +6,7 @@ description: Learn how to set up triggers for the Zeotap Collect Tag in Google T
 
 # 5. Set Up the Trigger
 
-Once the inputs for the Zeotap Collect Tag have been configured (see [Step 3: Configure the Tag](/gtm/docs/SetupGuide/Configuration/configureTheTag)), the next step is to define **when** the tag should fire. This is done by setting up triggers within Google Tag Manager (GTM).
+Once the inputs for the Zeotap Collect Tag have been configured (see [Step 3: Configure the Tag](/gtm/docs/SetupGuide/Configuration/configuration)), the next step is to define **when** the tag should fire. This is done by setting up triggers within Google Tag Manager (GTM).
 
 Triggers control the execution of the tag, and they determine which events on your website should result in the tag being fired. 
 
