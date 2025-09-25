@@ -80,7 +80,11 @@ Refer [TCF/GDPR consent strategy](../Consent/gdpr) for usage and more details.
 *   **Default:** `false`
 *   **Description:** Adds an additional layer of validation when using a TCF CMP (`useConsent: true` and `checkForCMP: true`).
     *   **`false` (Default):** The SDK only checks for consent against the configured `purposesForTracking` and `purposesForCookieSyncing`.
-    *   **`true`:** In addition to checking purpose consents, the SDK will also explicitly check if consent has been granted for Zeotap as a vendor (Vendor ID 301) within the TCF consent string. Tracking and/or cookie syncing will only proceed if both the required purpose consents *and* vendor consent for Zeotap are present.
+    *   **`true`:** In addition to checking purpose consents, the SDK will also explicitly check if consent has been granted for Zeotap as a vendor (Vendor ID 1469) within the TCF consent string. Tracking and/or cookie syncing will only proceed if both the required purpose consents *and* vendor consent for Zeotap are present.
+
+:::info
+    <b>Important</b>: Please ensure your CMP configuration includes new <b>Vendor ID 1469</b> for 1st Party data tracking. Additionally, include <b>Vendor ID 301</b> if cookie sync is enabled. <a href="/websdk/docs/Configurations/consentOptions#shouldcheckzeotapvendorconsent">Learn more</a>'
+:::
 
 ---
 

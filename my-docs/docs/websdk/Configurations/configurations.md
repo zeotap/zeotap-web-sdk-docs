@@ -34,10 +34,13 @@ Only works for PIIs (cellno, email, loginid) sent using [setUserIdentities](../A
 | [`purposesForTracking`](./consentOptions#purposesfortracking)             | Number[]                                 | TCF Purpose IDs required for tracking user activity. Default depends on TCF version/config (e.g., `[1,3,4]` or `[1,5,6]`).                                      |
 | [`purposesForCookieSync`](./consentOptions#purposesforcookiesyncing)            | Number[]                                 | TCF Purpose IDs required for cookie syncing. Default depends on TCF version/config (e.g., `[1,3,4]` or `[1,5,6]`).                                             |
 | [`includeTCFString`](./consentOptions#includetcfstring)                     | Boolean                                  | If `true`, the TCF consent string is included in the event payload regardless of the consent mechanism used. No default specified.                              |
-| [`shouldCheckZeotapVendorConsent`](./consentOptions#shouldcheckzeotapvendorconsent)     | Boolean                                  | If `true`, the SDK checks for Zeotap's vendor consent (ID 301) before checking tracking purposes. Defaults to `false`.                                           |
+| [`shouldCheckZeotapVendorConsent`](./consentOptions#shouldcheckzeotapvendorconsent)     | Boolean                                  | If `true`, the SDK checks for Zeotap's vendor consent (ID 1469) before checking tracking purposes. Defaults to `false`.                                           |
 
 [Learn more about combined usage of consent options](./consentOptions#combined-usage)
 
+:::info
+    <b>Important</b>: Please ensure your CMP configuration includes new <b>Vendor ID 1469</b> for 1st Party data tracking. Additionally, include <b>Vendor ID 301</b> if cookie sync is enabled. <a href="/websdk/docs/Configurations/consentOptions#shouldcheckzeotapvendorconsent">Learn more</a>'
+:::
 
 ### Storage options
 
