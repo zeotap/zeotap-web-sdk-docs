@@ -3,6 +3,10 @@ sidebar_position: 0
 title: Configurations
 ---
 
+:::info
+    Try our server side [configurations feature](./Serverside/serversideConfig). Configure your source on www.app.zeotap.com and just initialize sdk on your website as : `window.zeotap.init("writeKey");`
+:::
+
 ## Usage
 
 The Zeotap Web SDK can be configured by passing an options object during the [`init`](/docs/quickStart#integration) call. eg: `window.zeotap.init("writeKey", <options>);`
