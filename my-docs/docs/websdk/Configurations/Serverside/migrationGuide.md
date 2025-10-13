@@ -7,7 +7,7 @@ description: How to mirgate from client side to server side
 # Migration Guide: Client-side → Server-side Configs
 
 ## Why Migrate?
-- Previously, configs were passed directly in the SDK initialization (`MySDK.init({...})`).
+- Previously, configs were passed directly in the SDK initialization (`window.zeotap.init({...})`).
 - Now, configs can be managed centrally in the **Config Panel**.
 - Benefits:
   - No redeploy needed when configs change.
@@ -23,7 +23,7 @@ description: How to mirgate from client side to server side
 - Make a note of the current settings, this ensures you don’t miss any important options when moving to server-side configs.
  For example:
     ```js
-    MySDK.init("YOUR_KEY", {
+    window.zeotap.init("YOUR_KEY", {
     areIdentitiesHashed: true,
     hashIdentities: false,
     useConsent: true,
@@ -39,7 +39,7 @@ description: How to mirgate from client side to server side
 ### Step 3 — Simplify Your SDK Init
 **Before (client-side config inline):**
 ```js
-MySDK.init("YOUR_KEY", {
+window.zeotap.init("YOUR_KEY", {
   consentMode: "tcf",
   identityMode: "id5",
   enableTracking: true,
@@ -48,7 +48,7 @@ MySDK.init("YOUR_KEY", {
 
 **After (server-side config):**
 ```js
-MySDK.init("YOUR_KEY");
+window.zeotap.init("YOUR_KEY");
 // Configs are now fetched from the dashboard
 ```
 

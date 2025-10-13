@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: Server Side Configurations
+title: Server Side Configurations(WIP)
 description: Configurations
 ---
 

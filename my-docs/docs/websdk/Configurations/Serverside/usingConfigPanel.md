@@ -45,7 +45,7 @@ The SDK determines which config to use in the following order of priority:
 - Configs are applied automatically following the **priority order**: server → local storage fallback → client-side(optional) → SDK defaults.
 
 ```js
-MySDK.init("YOUR_KEY");
+window.zeotap.init("YOUR_KEY");
 // SDK applies configs based on priority order automatically
 ```
 
