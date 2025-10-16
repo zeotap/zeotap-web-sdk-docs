@@ -47,9 +47,9 @@ Every event consists of:
 
 To start tracking events, you'll need to:
 
-1. [Implement user identification](./user-identification)
-2. [Configure page properties](./page-tracking) 
-3. [Track user actions](./user-actions)
+1. [Implement user identification](./userIdentities)
+2. [Configure page properties](./pageViews) 
+3. [Track user actions](./trackingUserActions)
 
 
 ## Best Practices

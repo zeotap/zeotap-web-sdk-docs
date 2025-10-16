@@ -1,9 +1,9 @@
 {
-    "label": "Events",
+    "label": "Configurations",
     "position": 4,
     "link": {
         "type": "doc",
-        "id": "eventOverview" 
+        "id": "configuration" 
     }
   }
   

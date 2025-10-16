@@ -200,7 +200,3 @@ import com.zeotap.collect.CollectOptions;
     - Verify the AAR file is in the correct app/libs/ directory
     - Check that the filename matches exactly in your build.gradle
     - Ensure the libs folder is properly configured in sourceSets
-
-## Next Steps
-
-Once installation is complete, proceed to [SDK Initialization](./initialization) to configure and initialize the SDK in your application.

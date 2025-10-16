@@ -198,9 +198,3 @@ If page properties aren't showing up in your events:
 ### Memory Considerations
 
 Page properties are stored in memory, so avoid setting extremely large objects or too many properties per page.
-
-## Next Steps
-
-- Learn about [Event Tracking](./event-tracking.md) to track user actions
-- Explore [User Identification](./user-identification.md) to identify your users
-- Check out [SDK Configuration](./configuration.md) for advanced settings
