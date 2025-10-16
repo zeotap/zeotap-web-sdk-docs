@@ -32,7 +32,3 @@ It integrates easily with your existing Android application setup.
 - Real-time and batch data upload modes
 - Highly configurable setup with granular options
 - Supports both raw and hashed user identifiers
-
-## Next Steps
-
-Start with [Installing the SDK](./installation.md)
