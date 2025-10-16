@@ -281,7 +281,6 @@ const config = {
             ],
           },
           {
-            href: 'https://github.com/zeotap/zeotap-web-sdk-docs/',
             position: 'left',
             label: 'Android SDK',
             items: [
@@ -296,7 +295,7 @@ const config = {
             ],
           },
           {
-            href: 'https://github.com/zeotap',
+            href: 'https://github.com/zeotap/zeotap-web-sdk-docs/',
             label: 'GitHub',
             position: 'right',
           },

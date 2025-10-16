@@ -1,8 +1,10 @@
-.features {
+.featuresGrid {
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
   padding: 2rem 0;
-  width: 100%;
+  background: #fafbfc;
 }
 .docRows {
   display: grid;
@@ -13,7 +15,18 @@
   height: 200px;
   width: 200px;
 }
-
-.featureContainer {
-  margin: 0 auto;
+.featureCard {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(30,32,34,0.10);
+  padding: 1.5rem;
+  width: 290px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.featureIcon {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
 }
