@@ -153,31 +153,6 @@ const config = {
         blogSidebarCount: 'ALL',
         showReadingTime: false,
         postsPerPage: 'ALL',
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'iossdk',
-        path: 'docs/iossdk',
-        routeBasePath: 'iossdk/docs',
-        sidebarPath: './sidebars.js',
-        breadcrumbs: true,
-        showLastUpdateTime: true
-      },
-    ],
-    [
-      '@docusaurus/plugin-content-blog',
-      {
-        id: 'iossdk-releases',
-        path: 'release-notes/iossdk',
-        routeBasePath: 'iossdk/release-notes',
-        blogTitle: 'iOS SDK Release Notes',
-        blogDescription: 'iOS SDK product updates and changes',
-        blogSidebarTitle: 'Recent Releases',
-        blogSidebarCount: 'ALL',
-        showReadingTime: false,
-        postsPerPage: 'ALL',
         onUntruncatedBlogPosts: 'ignore',
       },
     ],
