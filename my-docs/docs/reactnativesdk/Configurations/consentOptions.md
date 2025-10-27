@@ -77,7 +77,11 @@ initialiseZeoCollect(options);
 *   **Default:** `false`
 *   **Description:** Adds an additional layer of validation when using a CMP (`use_consent: true` and `check_for_cmp: true`).
     *   **`false` (Default):** The SDK only checks for consent against the configured `purposes_for_tracking`.
-    *   **`true`:** In addition to checking purpose consents, the SDK will also explicitly check if consent has been granted for Zeotap as a vendor within the consent data. Tracking will only proceed if both the required purpose consents *and* vendor consent for Zeotap are present.
+    *   **`true`:** In addition to checking purpose consents, the SDK will also explicitly check if consent has been granted for Zeotap as a vendor (ID 1469) within the consent data. Tracking will only proceed if both the required purpose consents *and* vendor consent for Zeotap are present.
+
+:::info
+<b>Important</b>: Please ensure that your CMP configuration includes the new <b>Vendor ID 1469</b> for 1st Party data tracking if your React-Native SDK version is <b>1.3.9 or later</b>. Additionally, include <b>Vendor ID 301</b> for backward compatibility.
+:::
 
 ```javascript
 const options = {
