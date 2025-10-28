@@ -42,7 +42,7 @@ After [installing](/adobeLaunch/docs/installation) the Zeotap Collect Extension 
 *   **Configuration**:
     *   Select "TCF (GDPR)" from the dropdown.
     *   **Purposes for tracking of events**: You **must** select the purposes required for tracking.
-    *   **(Optional) Check Zeotap Vendor Consent**: You can enable an option to also check for explicit consent for Zeotap as a vendor (ID 301) in the TC string.
+    *   **(Optional) Check Zeotap Vendor Consent**: You can enable an option to also check for explicit consent for Zeotap as a vendor (ID 1469) in the TC string.
     *   You can still use [`Set Custom Consent`](/adobeLaunch/docs/Actions/setCustomConsent) within the extension to pass custom brand consent details if needed.
     
 
