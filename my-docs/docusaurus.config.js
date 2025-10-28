@@ -331,6 +331,14 @@ const config = {
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Zeotap. Built with Docusaurus.`,
       },
+      announcementBar: {
+        id: 'zeotap-vendor-id',
+        content:
+          '<b>Important</b>: Please ensure your CMP configuration includes new <b>Vendor ID 1469</b> for 1st Party data tracking. Additionally, include <b>Vendor ID 301</b> if cookie sync is enabled. <a href="/websdk/docs/Configurations/consentOptions#shouldcheckzeotapvendorconsent">Learn more</a>',
+        backgroundColor: '#fff4e5',
+        textColor: '#663c00',
+        isCloseable: false,
+      },
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
