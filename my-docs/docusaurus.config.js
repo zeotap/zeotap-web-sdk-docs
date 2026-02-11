@@ -355,6 +355,19 @@ const config = {
                 to: '/reactnativesdk/release-notes',
               },
             ],
+          },
+          {
+            title: 'Android SDK',
+            items: [
+              {
+                label: 'Documentation',
+                to: '/androidsdk/docs/intro',
+              },
+              {
+                label: 'Release Notes',
+                to: '/androidsdk/release-notes',
+              },
+            ],
           }
         ],
         copyright: `Copyright © ${new Date().getFullYear()} Zeotap. Built with Docusaurus.`,

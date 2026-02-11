@@ -6,10 +6,10 @@ description: Understand how to configure PII hashing behavior using hashIdentiti
 
 ## `areIdentitiesHashed` & `hashIdentities`
 
-These two configuration options work together to control how the Zeotap android SDK handles Personal Identifiable Information (PII) like email addresses and phone numbers when you call the `setUserIdentities` function. Correctly configuring these options is crucial for ensuring data is processed according to your intended hashing strategy.
+These two configuration options work together to control how the Zeotap Android SDK handles Personal Identifiable Information (PII) like email addresses and phone numbers when you call the `setUserIdentities` function. Correctly configuring these options is crucial for ensuring data is processed according to your intended hashing strategy.
 
 :::note PII
-These configuration only affect PIIs sent using setUserIdentities function. Recognised PIIs are cellno, email, loginid. [Learn more about PIIs](../APIReference/setUserIdentities#pii-identifier-key-reference)
+These configuration only affect PIIs sent using setUserIdentities function. Recognised PIIs are cellno, email, loginid. [Learn more about PIIs](../APIReferences/setUserIdentities#pii-identifier-key-reference)
 :::
 
 ## Options Definitions
@@ -38,67 +38,70 @@ This means by default, the SDK sends raw PII values without any client-side hash
 
 | `areIdentitiesHashed` | `hashIdentities` | Resulting Scenario                     |
 | :-------------------- | :--------------- | :------------------------------------- |
-| `false`               | `false`          | [**Sending Raw Identifiers**](../APIReference/setUserIdentities#sending-raw-identifiers) (Default) |
-| `true`                | `false`          | [**Sending Pre-Hashed Identifiers**](../APIReference/setUserIdentities#sending-pre-hashed-identifiers)    |
-| `false`               | `true`           | [**SDK Performs Hashing**](../APIReference/setUserIdentities#sdk-performs-hashing)              |
+| `false`               | `false`          | [**Sending Raw Identifiers**](../APIReferences/setUserIdentities#sending-raw-identifiers) (Default) |
+| `true`                | `false`          | [**Sending Pre-Hashed Identifiers**](../APIReferences/setUserIdentities#sending-pre-hashed-identifiers)    |
+| `false`               | `true`           | [**SDK Performs Hashing**](../APIReferences/setUserIdentities#sdk-performs-hashing)              |
 | `true`                | `true`           | **Invalid**                            |
 
 ### Scenario 1: Sending Raw Identifiers (Default)
 
-```swift
-var collectOptions = CollectOption()
-    .writeKey(value: "YOUR_WRITE_KEY")
+```java
+CollectOptions options = CollectOptions.builder(this)
+    .credential("YOUR_WRITE_KEY")
     .areIdentitiesHashed(false)   // or omit (default)
     .hashIdentities(false)        // or omit (default)
-    .build()
+    .build();
 
-Collect.initialize(option: collectOptions)
+Collect.init(options);
 
 // Later in your code
-Collect.getInstance()?.setUserIdentities([
-    "email": "user@example.com",     // Raw email
-    "cellno": "+1234567890"          // Raw phone number
-])
+Map<String, String> identities = new HashMap<>();
+identities.put("email", "user@example.com");     // Raw email
+identities.put("cellno", "1234567890");           // Raw phone number
+
+Collect.getInstance().setUserIdentities(identities);
 ```
 
 ### Scenario 2: Sending Pre-Hashed Identifiers
 
-```swift
-var collectOptions = CollectOption()
-    .writeKey(value: "YOUR_WRITE_KEY")
+```java
+CollectOptions options = CollectOptions.builder(this)
+    .credential("YOUR_WRITE_KEY")
     .areIdentitiesHashed(true)
     .hashIdentities(false)
-    .build()
+    .build();
 
-Collect.initialize(option: collectOptions)
+Collect.init(options);
 
 // Later in your code - using hashed keys
-Collect.getInstance()?.setUserIdentities([
-    "email_sha256_lowercase": "5d41402abc4b2a76b9719d911017c592",  // Pre-hashed email
-    "cellno_sha256": "e3b0c44298fc1c149afbf4c8996fb924"             // Pre-hashed phone
-])
+Map<String, String> identities = new HashMap<>();
+identities.put("email_sha256_lowercase", "5d41402abc4b2a76b9719d911017c592");  // Pre-hashed email
+identities.put("cellno_sha256", "e3b0c44298fc1c149afbf4c8996fb924");           // Pre-hashed phone
+
+Collect.getInstance().setUserIdentities(identities);
 ```
 
 ### Scenario 3: SDK Performs Hashing
 
-```swift
-var collectOptions = CollectOption()
-    .writeKey(value: "YOUR_WRITE_KEY")
+```java
+CollectOptions options = CollectOptions.builder(this)
+    .credential("YOUR_WRITE_KEY")
     .areIdentitiesHashed(false)
     .hashIdentities(true)
-    .build()
+    .build();
 
-Collect.initialize(option: collectOptions)
+Collect.init(options);
 
 // Later in your code
-Collect.getInstance()?.setUserIdentities([
-    "email": "user@example.com",     // Raw email - SDK will hash
-    "cellno": "+1234567890"          // Raw phone - SDK will hash
-])
+Map<String, String> identities = new HashMap<>();
+identities.put("email", "user@example.com");     // Raw email - SDK will hash
+identities.put("cellno", "1234567890");           // Raw phone - SDK will hash
+
+Collect.getInstance().setUserIdentities(identities);
 ```
 
 :::tip Recommendation
-It is **highly recommended** to explicitly set both `areIdentitiesHashed` and `hashIdentities` in your `CollectOption` configuration to clearly document your intended hashing strategy and avoid potential confusion.
+It is **highly recommended** to explicitly set both `areIdentitiesHashed` and `hashIdentities` in your `CollectOptions` configuration to clearly document your intended hashing strategy and avoid potential confusion.
 :::
 
 :::warning[Invalid Configuration]
@@ -106,14 +109,14 @@ Setting both `areIdentitiesHashed: true` and `hashIdentities: true` simultaneous
 
 This creates a conflict: the SDK is being told to hash data that is also being declared as already hashed. This can lead to incorrect, double-hashed data.
 
-**Do not use this combination.** 
+**Do not use this combination.**
 :::
 
 ## Hashing Algorithm
 
-When `hashIdentities` is set to `true`, the android SDK uses SHA-256 hashing algorithm to hash PII values before transmission.
+When `hashIdentities` is set to `true`, the Android SDK uses SHA-256/SHA-1/MD-5 hashing algorithm to hash PII values before transmission.
 
 ## Related Topics
 
-*   [`setUserIdentities`](../APIReference/setUserIdentities) API Reference
+*   [`setUserIdentities`](../APIReferences/setUserIdentities) API Reference
 *   [Configuration Overview](./configurations) for all available SDK options

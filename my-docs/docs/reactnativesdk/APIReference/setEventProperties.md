@@ -143,7 +143,7 @@ setEventProperties("purchase_completed", {
 ## Related Methods
 
 - [setEventNameProperties](./setEventNameProperties) - Track events with name only
-- [trackInstantEvent](./trackInstantEvent) - Send events immediately bypassing the queue
+- [setInstantEventProperties](./setInstantEventProperties) - Send events immediately bypassing the queue
 - [setPageProperties](./setPageProperties) - Set page/screen context
 - [setUserProperties](./setUserProperties) - Set user attributes
 

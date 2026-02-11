@@ -1,34 +1,42 @@
 ---
 sidebar_position: 1
-title: Android SDK Overview
-description: Introduction to the Zeotap Android SDK and its core capabilities
+title: Introduction to Zeotap Collect Android SDK
 ---
 
-# Android SDK Overview
+# Welcome to the Zeotap Collect Android SDK Documentation
 
-Welcome to the Zeotap **Android SDK** documentation. This SDK enables mobile developers to collect and enrich user data, manage user consent, and support privacy-compliant tracking across Android apps.
+The Zeotap Collect Android SDK enables you to collect and manage user data, track events, and set user properties in your Android applications. This documentation will guide you through the implementation process and provide examples for common use cases.
 
-## What Is the Android SDK?
+## Prerequisites
+1. Access to Zeotap CDP.
+2. Write key obtained from a source created in Zeotap CDP. [How to obtain a write key?](./configurations/writeKey)
+3. Android SDK version targeting API level 19 or higher
+4. Gradle 4.0 or higher
+5. Java 8 compatibility
 
-The Zeotap Android SDK is a lightweight, privacy-first software development kit that:
+## Latest Version
 
-- Tracks user behavior and custom events
-- Collects user identities and custom attributes
-- Handles consent management (GDPR / TCF 2.0 support)
-- Sends data to Zeotap for audience enrichment and activation
-
-It integrates easily with your existing Android application setup.
-
-##  Latest Version
-
-`2.2.8`
+**2.2.11** &nbsp; [View Release Notes](/androidsdk/release-notes)
 
 > Always use the latest version to ensure compatibility and access to the newest features.
 
+## Getting Started
+
+Ready to unlock the full potential of your customer data? Follow these steps to get started:
+
+1. **Installation:** Learn how to quickly integrate the Zeotap Collect Android SDK into your application. [Quick Start Guide](./quickStart)
+2. **Configuration:** Configure the SDK. [Configuration Guide](./configurations/configurations)
+3. **API Reference:** See all the available methods. [API Reference Guide](./APIReferences/)
+4. **Examples:** Guide to different use cases and their implementation. [Examples Guide](./Examples/examples)
+
 ## Key Features
 
-- Easy-to-use API for event tracking and identity management
-- Built-in GDPR and TCF 2.0 consent support
-- Real-time and batch data upload modes
-- Highly configurable setup with granular options
-- Supports both raw and hashed user identifiers
+- **User Identity Management:** Associate data with specific users across sessions
+- **Event Tracking:** Track custom events and user interactions
+- **User Properties:** Set and manage user attributes
+- **Privacy Compliance:** Built-in support for consent management and privacy regulations (GDPR / TCF 2.0)
+- **Offline Support:** Queue data when offline and sync when connection is restored
+
+## Support
+
+If you have any questions or need assistance, please contact our support team or refer to the examples section.
