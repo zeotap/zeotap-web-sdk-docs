@@ -32,7 +32,7 @@ In your app-level `build.gradle` file, add the SDK dependency:
 
 ```gradle
 dependencies {
-    implementation "com.zeotap:zeo-collect:2.2.11"
+    implementation "com.zeotap:zeo-collect:2.2.12"
 
     // For Android 13+ (AdID support)
     implementation "com.google.android.gms:play-services-ads:20.4.0"
@@ -79,7 +79,7 @@ Clean and rebuild your project:
 Download the Android SDK AAR file from the [link](https://content.zeotap.com/android-sdk/android-collect-sdk.zip) and place it in your project's libs folder:
 
 ```
-Project Root > app > libs > zeotap-collect-android-v2.2.11.aar
+Project Root > app > libs > zeotap-collect-android-v2.2.12.aar
 ```
 
 :::tip
@@ -123,7 +123,7 @@ Add the AAR file to your dependencies:
 
 ```gradle
 dependencies {
-    implementation(name: 'zeotap-collect-android-v2.2.11', ext: 'aar')
+    implementation(name: 'zeotap-collect-android-v2.2.12', ext: 'aar')
 }
 ```
 

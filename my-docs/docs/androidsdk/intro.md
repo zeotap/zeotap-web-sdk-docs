@@ -16,7 +16,7 @@ The Zeotap Collect Android SDK enables you to collect and manage user data, trac
 
 ## Latest Version
 
-**2.2.11** &nbsp; [View Release Notes](/androidsdk/release-notes)
+**2.2.12** &nbsp; [View Release Notes](/androidsdk/release-notes)
 
 > Always use the latest version to ensure compatibility and access to the newest features.
 
