@@ -50,7 +50,7 @@ In your app-level `build.gradle` file, add the following dependencies:
 
 ```gradle
 dependencies {     
-    implementation "com.zeotap:zeo-collect:2.2.8"
+    implementation "com.zeotap:zeo-collect:2.2.12"
     
     // For Android 13+ (AdID support)
     implementation "com.google.android.gms:play-services-ads:20.4.0"
@@ -103,7 +103,7 @@ If not installed, follow the [CocoaPods installation guide](https://guides.cocoa
 Navigate to the iOS directory of the project and add `ZeotapCollect` package.
 
 ```swift
-pod 'ZeotapCollect', '~> 1.3.7'
+pod 'ZeotapCollect', '~> 1.3.10'
 ```
 
 And install dependencies from ios directory:
