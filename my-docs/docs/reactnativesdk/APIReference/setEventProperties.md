@@ -8,37 +8,42 @@ description: Send custom events with properties to Zeotap.
 
 The `setEventProperties` method is used to send custom events to Zeotap along with specified event properties and name.
 
-## Syntax
+## Available Methods
+
+| Method | Description |
+|--------|-------------|
+| `setEventNameProperties` | Track an event with name only |
+| `setEventNamePropertiesWithCallback` | Track an event with name only and a response callback |
+| `setEventProperties` | Track an event with name and properties |
+| `setEventPropertiesWithCallback` | Track an event with name, properties, and a response callback |
+
+---
+
+## setEventNameProperties
+
+Sends an event with only the event name, without any additional properties.
+
+### Syntax
 
 ```javascript
-setEventProperties(eventName, eventProperties, callback)
-setEventNameProperties(eventName, callback)
+import { setEventNameProperties } from 'zeo-collect';
+
+setEventNameProperties(eventName);
 ```
 
-## Parameters
+### Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | eventName | String | Yes | The name of the event to track |
-| eventProperties | Object | No | Key-value pairs of event properties |
-| callback | Function | No | Callback function to handle response |
 
-## Usage Examples
-
-### Event Name Only
-
-If you only need to track the event name without additional properties, use `setEventNameProperties`:
+### Example
 
 ```javascript
 import { setEventNameProperties } from 'zeo-collect';
 
 // Track event with name only
 setEventNameProperties("app_opened");
-
-// With callback
-setEventNameProperties("user_logout", (response) => {
-    console.log("Logout event tracked:", response);
-});
 ```
 
 The payload with event name only:
@@ -59,7 +64,59 @@ The payload with event name only:
     ]
 ```
 
-### Basic Event Tracking
+---
+
+## setEventNamePropertiesWithCallback
+
+Sends an event with only the event name and provides a callback to handle the response.
+
+### Syntax
+
+```javascript
+import { setEventNamePropertiesWithCallback } from 'zeo-collect';
+
+setEventNamePropertiesWithCallback(eventName, callback);
+```
+
+### Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| eventName | String | Yes | The name of the event to track |
+| callback | Function | Yes | Callback function to handle the response |
+
+### Example
+
+```javascript
+import { setEventNamePropertiesWithCallback } from 'zeo-collect';
+
+setEventNamePropertiesWithCallback("user_logout", (response) => {
+    console.log("Logout event tracked:", response);
+});
+```
+
+---
+
+## setEventProperties
+
+Sends an event with the event name and additional event properties.
+
+### Syntax
+
+```javascript
+import { setEventProperties } from 'zeo-collect';
+
+setEventProperties(eventName, eventProperties);
+```
+
+### Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| eventName | String | Yes | The name of the event to track |
+| eventProperties | Object | Yes | Key-value pairs of event properties |
+
+### Example
 
 ```javascript
 import { setEventProperties } from 'zeo-collect';
@@ -95,12 +152,34 @@ The payload with event name and properties that passed to the function:
     ]
 ```
 
-### Event with Callback
+---
+
+## setEventPropertiesWithCallback
+
+Sends an event with the event name, event properties, and a callback to handle the response.
+
+### Syntax
 
 ```javascript
-import { setEventProperties } from 'zeo-collect';
+import { setEventPropertiesWithCallback } from 'zeo-collect';
 
-setEventProperties("purchase_completed", {
+setEventPropertiesWithCallback(eventName, eventProperties, callback);
+```
+
+### Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| eventName | String | Yes | The name of the event to track |
+| eventProperties | Object | Yes | Key-value pairs of event properties |
+| callback | Function | Yes | Callback function to handle the response |
+
+### Example
+
+```javascript
+import { setEventPropertiesWithCallback } from 'zeo-collect';
+
+setEventPropertiesWithCallback("purchase_completed", {
     order_id: "ORD-12345",
     total_amount: 249.99,
     payment_method: "credit_card",

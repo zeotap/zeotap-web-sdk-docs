@@ -8,20 +8,30 @@ description: Send consent and/or brand consents.
 
 The `setConsent` method is used to manage user consent for data collection and processing. This is essential for compliance with privacy regulations like GDPR, CCPA, and other data protection laws.
 
-## Syntax
+## Available Methods
+
+| Method | Description |
+|--------|-------------|
+| `setConsent` | Set consent properties |
+| `setConsentWithCallback` | Set consent properties with a response callback |
+
+---
+
+## setConsent
+
+### Syntax
 
 ```javascript
 import { setConsent } from 'zeo-collect';
 
-setConsent(properties, callback)
+setConsent(properties);
 ```
 
-## Parameters
+### Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | properties | Object | Yes | Object of consent properties and their status |
-| callback | Function | Optional | Callback to handle function response |
 
 
 ## Consent Properties
@@ -98,12 +108,12 @@ In case of, default consent (`opt_out`: `false`)  or CMP consent (`use_consent`:
 
 ### Passing Consent with Callback
 
-You can also pass consent with Callback function as shown below. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call. 
+You can also pass consent with a callback function using `setConsentWithCallback`. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call.
 
 ```javascript
-import { setConsent } from 'zeo-collect';
+import { setConsentWithCallback } from 'zeo-collect';
 
-setConsent({
+setConsentWithCallback({
     track: true,
     zeotapVendorConsent: true,
     abcVendorConsent: false

@@ -22,22 +22,32 @@ The SDK does not store or persist any default page properties. However, once `se
 If page properties are never set, no `page` property is included in the event payload. Once set, they persist across subsequent calls until updated or cleared.
 :::
 
-## Syntax
+## Available Methods
+
+| Method | Description |
+|--------|-------------|
+| `setPageProperties` | Set page/screen properties |
+| `setPagePropertiesWithCallback` | Set page/screen properties with a response callback |
+
+---
+
+## setPageProperties
+
+### Syntax
 
 ```javascript
 import { setPageProperties } from 'zeo-collect';
 
-setPageProperties(properties, callback)
+setPageProperties(properties);
 ```
 
-## Parameters
+### Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | properties | Object | Yes | This indicates the page specific properties |
-| callback | Function | Optional | Callback to handle function response |
 
-## Usage Examples
+### Example
 
 ```javascript
 import { setPageProperties } from 'zeo-collect';
@@ -71,14 +81,33 @@ The detailed page properties will be passed in the payload:
     ]
 ```
 
-## Set page properties with callbacks
+---
 
-You can also set page properties with Callback function as shown below. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call. 
+## setPagePropertiesWithCallback
+
+Sets page properties and provides a callback to handle the response. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call.
+
+### Syntax
 
 ```javascript
-import { setPageProperties } from 'zeo-collect';
+import { setPagePropertiesWithCallback } from 'zeo-collect';
 
-setPageProperties({
+setPagePropertiesWithCallback(properties, callback);
+```
+
+### Parameters
+
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| properties | Object | Yes | This indicates the page specific properties |
+| callback | Function | Yes | Callback function to handle the response |
+
+### Example
+
+```javascript
+import { setPagePropertiesWithCallback } from 'zeo-collect';
+
+setPagePropertiesWithCallback({
     name: "Product Details",
     category: "E-commerce"
 }, (data) => {
