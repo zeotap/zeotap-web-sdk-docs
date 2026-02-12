@@ -6,7 +6,11 @@ description: Send page view events and page-specific properties to Zeotap.
 
 # Track Page View Events
 
-After integrating the SDK, you can log the users' page view events by calling `setPageProperties([String: Any])` and sending all page related information as key=value properties on the page load event. All further user events on the same page are then attached with these page properties.
+After integrating the SDK, you can log the users' page view events by calling `setPageProperties([String: Any])` and sending all page related information as key=value properties.
+
+**How persistence works:**
+
+The SDK does not store or persist any default page properties. However, once `setPageProperties` is called with values, those properties are **persisted and automatically included** in the `page` node of all subsequent SDK calls — including events, user properties, and other payloads — until they are explicitly changed. To update page properties, call `setPageProperties` again with the new values. To remove page properties, pass empty values.
 
 **Why use it?**
 
@@ -15,7 +19,7 @@ After integrating the SDK, you can log the users' page view events by calling `s
 *   **Content Analytics:** Helps analyze which pages/screens are most engaging for users.
 
 :::tip[Note]
-If page properties are not defined, then by default, no page property is available on an event payload.
+If page properties are never set, no `page` property is included in the event payload. Once set, they persist across subsequent calls until updated or cleared.
 :::
 
 ## Syntax
