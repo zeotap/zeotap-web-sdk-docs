@@ -12,7 +12,7 @@ React Native is a popular JavaScript framework for building mobile applications.
 
 ## Latest Version
 
-**1.3.4** - [View Release Notes](../release-notes)
+**1.3.9** - [View Release Notes](../release-notes)
 
 :::tip Architecture Support
 If the **new architecture (Fabric Architecture)** is enabled in a React Native application, use SDK version `1.3.0` or higher with the required new architecture configurations. If you experience issues with a higher version, contact our support team at support@zeotap.com.
@@ -45,7 +45,7 @@ Ready to integrate the Zeotap React Native SDK? Follow our step-by-step guide:
 
 ## Need Help?
 
-- **Documentation**: Browse our comprehensive guides
+- **Documentation**: Browse our [comprehensive guides](https://sdkdocs.zeotap.com/)
 - **Support**: Contact support@zeotap.com for technical assistance
 - **Issues**: Report bugs and feature requests through our support channels
 
