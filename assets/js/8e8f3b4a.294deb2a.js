@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[6757],{3788:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/androidsdk/release-notes","page":1,"postsPerPage":16,"totalPages":1,"totalCount":16,"blogDescription":"Android SDK product updates and changes","blogTitle":"Android SDK Release Notes"}}')}}]);

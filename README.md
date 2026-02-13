@@ -1,1 +1,0 @@
-# zeotap-web-sdk-docs

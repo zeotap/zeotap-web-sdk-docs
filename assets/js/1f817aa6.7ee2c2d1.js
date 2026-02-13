@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[6726],{3542:e=>{e.exports=JSON.parse('{"blogBasePath":"/androidsdk/release-notes","blogTitle":"Android SDK Release Notes","authorsListPath":"/androidsdk/release-notes/authors"}')}}]);

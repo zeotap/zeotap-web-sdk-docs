@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[6507],{7106:s=>{s.exports=JSON.parse('{"blogBasePath":"/iossdk/release-notes","blogTitle":"iOS SDK Release Notes","authorsListPath":"/iossdk/release-notes/authors"}')}}]);

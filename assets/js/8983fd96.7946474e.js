@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[5018],{6412:e=>{e.exports=JSON.parse('{"blogBasePath":"/websdk/release-notes","blogTitle":"WebSDK Release Notes","authorsListPath":"/websdk/release-notes/authors"}')}}]);

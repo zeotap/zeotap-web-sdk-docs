@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[3420],{5404:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/iossdk/release-notes","page":1,"postsPerPage":12,"totalPages":1,"totalCount":12,"blogDescription":"iOS SDK product updates and changes","blogTitle":"iOS SDK Release Notes"}}')}}]);

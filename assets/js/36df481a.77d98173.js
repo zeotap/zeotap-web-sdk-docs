@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[1348],{3755:e=>{e.exports=JSON.parse('{"tags":[{"label":"release","permalink":"/reactnativesdk/release-notes/tags/release","count":21}]}')}}]);

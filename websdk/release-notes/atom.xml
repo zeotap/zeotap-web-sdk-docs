@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://sdkdocs.zeotap.com/websdk/release-notes</id>
+    <title>Zeotap SDK Docs Blog</title>
+    <updated>2025-05-12T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://sdkdocs.zeotap.com/websdk/release-notes"/>
+    <subtitle>Zeotap SDK Docs Blog</subtitle>
+    <icon>https://sdkdocs.zeotap.com/img/zeotap_favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Version 4.4.4]]></title>
+        <id>https://sdkdocs.zeotap.com/websdk/release-notes/v4.4.4</id>
+        <link href="https://sdkdocs.zeotap.com/websdk/release-notes/v4.4.4"/>
+        <updated>2025-05-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[What's Changed]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="whats-changed">What's Changed<a href="https://sdkdocs.zeotap.com/websdk/release-notes/v4.4.4#whats-changed" class="hash-link" aria-label="Direct link to What's Changed" title="Direct link to What's Changed">​</a></h2>
+<ul>
+<li>ZP-18140 Changes to support new interact contract and display interactions. by @divyeshakti in <a href="https://github.com/zeotap/analytics-sdk/pull/307" target="_blank" rel="noopener noreferrer">https://github.com/zeotap/analytics-sdk/pull/307</a></li>
+<li>ZP-19901 added change to fix interact by @divyeshakti in <a href="https://github.com/zeotap/analytics-sdk/pull/314" target="_blank" rel="noopener noreferrer">https://github.com/zeotap/analytics-sdk/pull/314</a></li>
+<li>ZP-18140 removing console logs , adding mode in write key and overriding storage on interaction. by @divyeshakti in <a href="https://github.com/zeotap/analytics-sdk/pull/315" target="_blank" rel="noopener noreferrer">https://github.com/zeotap/analytics-sdk/pull/315</a></li>
+</ul>
+<ul>
+<li>ZP-18140 added fix for zi , user_zi issue by @divyeshakti in <a href="https://github.com/zeotap/analytics-sdk/pull/316" target="_blank" rel="noopener noreferrer">https://github.com/zeotap/analytics-sdk/pull/316</a></li>
+<li>ZP-19624 fix for brand consent spl call in custom consent by @rishabh-zeo in <a href="https://github.com/zeotap/analytics-sdk/pull/317" target="_blank" rel="noopener noreferrer">https://github.com/zeotap/analytics-sdk/pull/317</a></li>
+<li>ZP-20639 added change to allow redirect display interactions by @divyeshakti in <a href="https://github.com/zeotap/analytics-sdk/pull/321" target="_blank" rel="noopener noreferrer">https://github.com/zeotap/analytics-sdk/pull/321</a></li>
+<li>ZP-20640 added change to load interact sdk based on a config by @divyeshakti in <a href="https://github.com/zeotap/analytics-sdk/pull/320" target="_blank" rel="noopener noreferrer">https://github.com/zeotap/analytics-sdk/pull/320</a></li>
+<li>ZP-20429 prefix user_ in keys of z_p by @rishabh-zeo in <a href="https://github.com/zeotap/analytics-sdk/pull/318" target="_blank" rel="noopener noreferrer">https://github.com/zeotap/analytics-sdk/pull/318</a></li>
+<li>ZP-20464 cellno e164 formats changes by @rishabh-zeo in <a href="https://github.com/zeotap/analytics-sdk/pull/319" target="_blank" rel="noopener noreferrer">https://github.com/zeotap/analytics-sdk/pull/319</a></li>
+<li>ZP-20429 test fix by @rishabh-zeo in <a href="https://github.com/zeotap/analytics-sdk/pull/323" target="_blank" rel="noopener noreferrer">https://github.com/zeotap/analytics-sdk/pull/323</a></li>
+<li>version upgrade 4.4.4 by @rishabh-zeo in <a href="https://github.com/zeotap/analytics-sdk/pull/324" target="_blank" rel="noopener noreferrer">https://github.com/zeotap/analytics-sdk/pull/324</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a href="https://github.com/zeotap/analytics-sdk/compare/v4.4.3...v4.4.4" target="_blank" rel="noopener noreferrer">https://github.com/zeotap/analytics-sdk/compare/v4.4.3...v4.4.4</a></p>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+</feed>

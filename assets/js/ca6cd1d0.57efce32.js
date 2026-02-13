@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[4855],{7477:e=>{e.exports=JSON.parse('{"title":"Recent Releases","items":[{"title":"Version 4.4.4","permalink":"/websdk/release-notes/v4.4.4","unlisted":false,"date":"2025-05-12T00:00:00.000Z"}]}')}}]);

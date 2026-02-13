@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[6985],{5136:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/reactnativesdk/release-notes","page":1,"postsPerPage":21,"totalPages":1,"totalCount":21,"blogDescription":"React Native SDK product updates and changes","blogTitle":"React Native SDK Release Notes"}}')}}]);

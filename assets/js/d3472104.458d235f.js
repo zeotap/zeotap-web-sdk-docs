@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[828],{630:e=>{e.exports=JSON.parse('{"metadata":{"permalink":"/websdk/release-notes","page":1,"postsPerPage":1,"totalPages":1,"totalCount":1,"blogDescription":"WebSDK product updates and changes","blogTitle":"WebSDK Release Notes"}}')}}]);

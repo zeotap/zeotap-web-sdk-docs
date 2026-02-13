@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://sdkdocs.zeotap.com/androidsdk/release-notes</id>
+    <title>Zeotap SDK Docs Blog</title>
+    <updated>2025-10-15T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://sdkdocs.zeotap.com/androidsdk/release-notes"/>
+    <subtitle>Zeotap SDK Docs Blog</subtitle>
+    <icon>https://sdkdocs.zeotap.com/img/zeotap_favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[Version 2.2.12]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.12</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.12"/>
+        <updated>2025-10-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Changes]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="changes">Changes<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.12#changes" class="hash-link" aria-label="Direct link to Changes" title="Direct link to Changes">​</a></h3>
+<ul>
+<li><strong>Zeotap Vendor Id Change</strong>: Updated Zeotap vendor id to 1469 in TCF configuration.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.2.11]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.11</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.11"/>
+        <updated>2025-07-18T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Fixes]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="fixes">Fixes<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.11#fixes" class="hash-link" aria-label="Direct link to Fixes" title="Direct link to Fixes">​</a></h3>
+<ul>
+<li><strong>Kotlin Support</strong>: Fixed obfuscation issue when SDK is used in Kotlin projects.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.2.10]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.10</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.10"/>
+        <updated>2025-07-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Fixes]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="fixes">Fixes<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.10#fixes" class="hash-link" aria-label="Direct link to Fixes" title="Direct link to Fixes">​</a></h3>
+<ul>
+<li>Fixed obfuscation issue in minified SDK causing conflicts with third-party libraries.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.2.9]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.9</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.9"/>
+        <updated>2025-05-16T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Changes]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="changes">Changes<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.9#changes" class="hash-link" aria-label="Direct link to Changes" title="Direct link to Changes">​</a></h3>
+<ul>
+<li><strong>Brand Consent Changes</strong>: Append <code>user_</code> prefix to all brand consent keys in the payload.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.2.8]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.8</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.8"/>
+        <updated>2025-03-07T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Fixes]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="fixes">Fixes<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.8#fixes" class="hash-link" aria-label="Direct link to Fixes" title="Direct link to Fixes">​</a></h3>
+<ul>
+<li>Fixed page view caching issue occurring on multiple requests.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.2.7]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.7</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.7"/>
+        <updated>2025-02-28T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Features]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="features">Features<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.7#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3>
+<ul>
+<li><strong>Brand Consent Support</strong>: Enhanced the <code>setConsent</code> method to accept brand consent along with primary consent.</li>
+<li><strong>Callback Functionality</strong>: Introduced support for callback functions in the <code>setConsent</code> method.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.2.6]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.6</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.6"/>
+        <updated>2024-11-20T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Features]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="features">Features<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.6#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3>
+<ul>
+<li><strong>Initialization Callback</strong>: Added support for a callback function in the initialization process to verify the response of function calls.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.2.5]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.5</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.5"/>
+        <updated>2024-10-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Features]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="features">Features<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.5#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3>
+<ul>
+<li><strong>Callback Integration</strong>: Enabled callback functions in certain SDK methods to monitor the responses of function calls.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.2.4]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.4</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.4"/>
+        <updated>2024-07-02T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Changes]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="changes">Changes<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.4#changes" class="hash-link" aria-label="Direct link to Changes" title="Direct link to Changes">​</a></h3>
+<ul>
+<li><strong>Consent Function Update</strong>: Modified the consent function to replace user identities after user synchronization if consent was revoked.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.2.3]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.3</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.3"/>
+        <updated>2024-05-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Features]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="features">Features<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.3#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3>
+<ul>
+<li><strong>Event Name Tracking</strong>: Appended event names as query parameters to all GET requests to record them as part of the SPL records.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.2.0]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.0</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.0"/>
+        <updated>2023-11-10T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Changes]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="changes">Changes<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.2.0#changes" class="hash-link" aria-label="Direct link to Changes" title="Direct link to Changes">​</a></h3>
+<ul>
+<li><strong>Property Persistence</strong>: Updated the SDK to persist User and Page properties across sessions.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.1.1]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.1.1</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.1.1"/>
+        <updated>2023-09-28T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Fixes]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="fixes">Fixes<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.1.1#fixes" class="hash-link" aria-label="Direct link to Fixes" title="Direct link to Fixes">​</a></h3>
+<ul>
+<li><strong>Patch Update</strong>: Addressed issues identified in version 2.1.0.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.1.0]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.1.0</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.1.0"/>
+        <updated>2023-08-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Changes]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="changes">Changes<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.1.0#changes" class="hash-link" aria-label="Direct link to Changes" title="Direct link to Changes">​</a></h3>
+<ul>
+<li><strong>GDPR Consent Resolution</strong>: Implemented updates related to consent resolution under GDPR.</li>
+<li><strong>SDK Optimization</strong>: Removed external libraries from the SDK and integrated native Android components.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.0.1]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.0.1</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.0.1"/>
+        <updated>2023-06-15T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Changes]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="changes">Changes<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.0.1#changes" class="hash-link" aria-label="Direct link to Changes" title="Direct link to Changes">​</a></h3>
+<ul>
+<li><strong>Integration Guide</strong>: Added documentation for integrating the Zeotap Android SDK using Dependency Manager.</li>
+<li><strong>Phone Number Hashing</strong>: Updated to E.164 standards for hashing cell phone numbers.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 2.0.0]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.0.0</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.0.0"/>
+        <updated>2023-03-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Changes]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="changes">Changes<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v2.0.0#changes" class="hash-link" aria-label="Direct link to Changes" title="Direct link to Changes">​</a></h3>
+<ul>
+<li><strong>PII Support</strong>: Included changes related to raw PII support and GDPR consent.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Version 1.0.0]]></title>
+        <id>https://sdkdocs.zeotap.com/androidsdk/release-notes/v1.0.0</id>
+        <link href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v1.0.0"/>
+        <updated>2022-01-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Initial Release]]></summary>
+        <content type="html"><![CDATA[<h3 class="anchor anchorWithStickyNavbar_LWe7" id="initial-release">Initial Release<a href="https://sdkdocs.zeotap.com/androidsdk/release-notes/v1.0.0#initial-release" class="hash-link" aria-label="Direct link to Initial Release" title="Direct link to Initial Release">​</a></h3>
+<ul>
+<li><strong>SDK Launch</strong>: Introduced the initial release of the Android Library.</li>
+</ul>]]></content>
+        <category label="release" term="release"/>
+    </entry>
+</feed>
