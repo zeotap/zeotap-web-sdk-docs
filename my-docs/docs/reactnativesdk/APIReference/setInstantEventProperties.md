@@ -6,7 +6,7 @@ description: Send events immediately bypassing the queue for critical real-time 
 
 # Track Instant Events
 
-Instant event methods are used to send events immediately to Zeotap, bypassing the normal queuing and batching mechanism. This is ideal for critical events that require real-time tracking.
+The `setInstantEventProperties` method is used to send events immediately to Zeotap, bypassing the normal queuing and batching mechanism. This is ideal for critical events that require real-time tracking.
 
 **Why use it?**
 
@@ -18,36 +18,28 @@ Instant event methods are used to send events immediately to Zeotap, bypassing t
 Use instant events sparingly for critical events only, as they bypass performance optimizations like batching and may impact network usage.
 :::
 
-## Available Methods
-
-| Method | Description |
-|--------|-------------|
-| `setInstantEventNameProperties` | Track an instant event with name only |
-| `setInstantEventNamePropertiesWithCallback` | Track an instant event with name only and a response callback |
-| `setInstantEventProperties` | Track an instant event with name and properties |
-| `setInstantEventPropertiesWithCallback` | Track an instant event with name, properties, and a response callback |
-
----
-
-## setInstantEventNameProperties
-
-Sends an instant event with only the event name, without any additional properties.
-
-### Syntax
+## Syntax
 
 ```javascript
-import { setInstantEventNameProperties } from 'zeo-collect';
+import { setInstantEventProperties } from 'zeo-collect';
 
-setInstantEventNameProperties(eventName);
+setInstantEventNameProperties(eventName, callback)
+setInstantEventProperties(eventName, eventProperties, callback)
 ```
 
-### Parameters
+## Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | eventName | String | Yes | The name of the event to track immediately |
+| eventProperties | Object | No | Key-value pairs of event properties |
+| callback | Function | No | Callback function to handle response |
 
-### Example
+## Usage Examples
+
+### Instant Event Name Only
+
+If you only need to track the event name without additional properties for critical events:
 
 ```javascript
 import { setInstantEventNameProperties } from 'zeo-collect';
@@ -74,60 +66,7 @@ The payload with instant event name only:
     ]
 ```
 
----
-
-## setInstantEventNamePropertiesWithCallback
-
-Sends an instant event with only the event name and provides a callback to handle the response.
-
-### Syntax
-
-```javascript
-import { setInstantEventNamePropertiesWithCallback } from 'zeo-collect';
-
-setInstantEventNamePropertiesWithCallback(eventName, callback);
-```
-
-### Parameters
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| eventName | String | Yes | The name of the event to track immediately |
-| callback | Function | Yes | Callback function to handle the response |
-
-### Example
-
-```javascript
-import { setInstantEventNamePropertiesWithCallback } from 'zeo-collect';
-
-setInstantEventNamePropertiesWithCallback("app_crash", (response) => {
-    console.log("Instant event tracked:", response);
-    // Handle success/error response
-});
-```
-
----
-
-## setInstantEventProperties
-
-Sends an instant event with the event name and additional event properties.
-
-### Syntax
-
-```javascript
-import { setInstantEventProperties } from 'zeo-collect';
-
-setInstantEventProperties(eventName, eventProperties);
-```
-
-### Parameters
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| eventName | String | Yes | The name of the event to track immediately |
-| eventProperties | Object | Yes | Key-value pairs of event properties |
-
-### Example
+### Basic Instant Event Tracking
 
 ```javascript
 import { setInstantEventProperties } from 'zeo-collect';
@@ -163,34 +102,12 @@ The payload with instant event that is sent immediately:
     ]
 ```
 
----
-
-## setInstantEventPropertiesWithCallback
-
-Sends an instant event with the event name, event properties, and a callback to handle the response.
-
-### Syntax
+### Instant Event with Callback
 
 ```javascript
-import { setInstantEventPropertiesWithCallback } from 'zeo-collect';
+import { setInstantEventProperties } from 'zeo-collect';
 
-setInstantEventPropertiesWithCallback(eventName, eventProperties, callback);
-```
-
-### Parameters
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| eventName | String | Yes | The name of the event to track immediately |
-| eventProperties | Object | Yes | Key-value pairs of event properties |
-| callback | Function | Yes | Callback function to handle the response |
-
-### Example
-
-```javascript
-import { setInstantEventPropertiesWithCallback } from 'zeo-collect';
-
-setInstantEventPropertiesWithCallback("payment_failed", {
+setInstantEventProperties("payment_failed", {
     payment_id: "PAY-12345",
     failure_reason: "insufficient_funds",
     amount: 99.99,
@@ -201,8 +118,6 @@ setInstantEventPropertiesWithCallback("payment_failed", {
     // Handle success/error response
 });
 ```
-
----
 
 ## Performance Impact
 

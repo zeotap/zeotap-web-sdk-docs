@@ -18,19 +18,12 @@ The `setUserIdentities` method is used to identify users by associating them wit
 Identifiers set using `setUserIdentities()` are persisted and automatically included in the `user` node of the payload for all subsequent events sent during the user's session(s).
 :::
 
-## Available Methods
-
-| Method | Description |
-|--------|-------------|
-| `setUserIdentities` | Set user identity key-value pairs |
-| `setUserIdentitiesWithCallback` | Set user identity key-value pairs with a response callback |
-
 ## Syntax
 
 ```javascript
 import { setUserIdentities } from 'zeo-collect';
 
-setUserIdentities(identities);
+setUserIdentities(identities, callback)
 ```
 
 ## Parameters
@@ -38,6 +31,7 @@ setUserIdentities(identities);
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | identities | Object | Yes | An object containing user identity key-value pairs |
+| callback | Function | Optional | Callback to handle function response |
 
 ## Understanding Identifier Types
 
@@ -472,14 +466,14 @@ setUserIdentities({
 });
 ```
 
-## Set User Identities with Callback
+## Set User identities with callbacks
 
-You can also set identities with a callback function using `setUserIdentitiesWithCallback`. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call.
+You can also set Identities with Callback function as shown below. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call.
 
 ```javascript
-import { setUserIdentitiesWithCallback } from 'zeo-collect';
+import { setUserIdentities } from 'zeo-collect';
 
-setUserIdentitiesWithCallback({
+setUserIdentities({
     // PII Keys (Raw or Hashed depending on scenario)
     email: "user@example.com",
     // Custom Keys

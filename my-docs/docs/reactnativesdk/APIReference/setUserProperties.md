@@ -14,32 +14,22 @@ The `setUserProperties` method sends user properties along with default user pro
 *   **Non-Persistent:** The properties sent via this method are associated with this specific `set_user_properties` event. They are **not** automatically persisted in the storage or automatically included with subsequent, different events (like page views or custom events triggered by `setEventProperties`).
 *   **Distinct from [`setUserIdentities`](./setUserIdentities):** This function is different from `setUserIdentities`, which is used for establishing and persisting core user identifiers. `setUserProperties` is for sending additional, often more dynamic or contextual, user-level attributes.
 
-## Available Methods
-
-| Method | Description |
-|--------|-------------|
-| `setUserProperties` | Set user properties |
-| `setUserPropertiesWithCallback` | Set user properties with a response callback |
-
----
-
-## setUserProperties
-
-### Syntax
+## Syntax
 
 ```javascript
-import { setUserProperties } from 'zeo-collect';
-
-setUserProperties(userProperties);
+setUserProperties(userProperties, callback)
 ```
 
-### Parameters
+## Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
 | userProperties | Object | Yes | Key-value pairs of user properties |
+| callback | Function | No | Callback function to handle response |
 
-### Example
+## Usage Examples
+
+### Basic User Properties
 
 ```javascript
 import { setUserProperties } from 'zeo-collect';
@@ -73,33 +63,10 @@ The detailed user properties will be passed in the payload:
     ]
 ```
 
----
-
-## setUserPropertiesWithCallback
-
-Sets user properties and provides a callback to handle the response.
-
-### Syntax
+### With Callback
 
 ```javascript
-import { setUserPropertiesWithCallback } from 'zeo-collect';
-
-setUserPropertiesWithCallback(userProperties, callback);
-```
-
-### Parameters
-
-| Parameter | Type | Required | Description |
-|-----------|------|----------|-------------|
-| userProperties | Object | Yes | Key-value pairs of user properties |
-| callback | Function | Yes | Callback function to handle the response |
-
-### Example
-
-```javascript
-import { setUserPropertiesWithCallback } from 'zeo-collect';
-
-setUserPropertiesWithCallback({
+setUserProperties({
     user_tier: "gold",
     preferences: "notifications_enabled",
     theme: "dark"
