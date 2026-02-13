@@ -39,9 +39,9 @@ If the **new architecture (Fabric Architecture)** is enabled in a React Native a
 Ready to integrate the Zeotap React Native SDK? Follow our step-by-step guide:
 
 1. [Quick Start Guide](./quickStart) - Set up the SDK in your project
-2. [Configuration Options](./Configurations/configurations) - Customize SDK behavior
+2. [Configuration Options](./configurations) - Customize SDK behavior
 3. [API Reference](./APIReference/) - Explore available methods
-4. [Examples](./Examples/examples) - See implementation examples
+4. [Examples](./Examples/) - See implementation examples
 
 ## Need Help?
 

@@ -140,4 +140,4 @@ setInstantEventProperties("payment_failed", {
 
 ---
 
-For more examples and integration patterns, see our [Examples Guide](../Examples/examples).
+For more examples and integration patterns, see our [Examples Guide](../Examples/).

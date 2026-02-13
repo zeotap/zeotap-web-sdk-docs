@@ -25,9 +25,9 @@ The Zeotap Collect Android SDK enables you to collect and manage user data, trac
 Ready to unlock the full potential of your customer data? Follow these steps to get started:
 
 1. **Installation:** Learn how to quickly integrate the Zeotap Collect Android SDK into your application. [Quick Start Guide](./quickStart)
-2. **Configuration:** Configure the SDK. [Configuration Guide](./configurations/configurations)
-3. **API Reference:** See all the available methods. [API Reference Guide](./APIReferences/)
-4. **Examples:** Guide to different use cases and their implementation. [Examples Guide](./Examples/examples)
+2. **Configuration:** Configure the SDK. [Configuration Guide](./configurations)
+3. **API Reference:** See all the available methods. [API Reference Guide](./category/api-reference)
+4. **Examples:** Guide to different use cases and their implementation. [Examples Guide](./Examples/)
 
 ## Key Features
 

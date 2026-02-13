@@ -335,4 +335,4 @@ public class BaseActivity extends AppCompatActivity {
 
 ---
 
-For more detailed API documentation, see our [API Reference](../APIReferences/) section.
+For more detailed API documentation, see our [API Reference](../category/api-reference) section.
