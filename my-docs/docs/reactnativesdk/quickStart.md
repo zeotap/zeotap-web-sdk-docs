@@ -260,9 +260,9 @@ After completing the setup:
 
 Now that you have the basic setup working:
 
-1. [Learn about available APIs](./APIReference/) - Explore all tracking methods
+1. [Learn about available APIs](./category/api-reference) - Explore all tracking methods
 2. [Configure consent management](./Consent/consentStrategy) - Set up privacy compliance
-3. [Customize configurations](./Configurations/configurations) - Optimize for your use case
-4. [View examples](./Examples/examples) - See advanced implementation patterns
+3. [Customize configurations](./configurations) - Optimize for your use case
+4. [View examples](./Examples/) - See advanced implementation patterns
 
 ---

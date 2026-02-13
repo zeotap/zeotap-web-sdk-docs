@@ -119,4 +119,4 @@ When `hashIdentities` is set to `true`, the Android SDK uses SHA-256/SHA-1/MD-5 
 ## Related Topics
 
 *   [`setUserIdentities`](../APIReferences/setUserIdentities) API Reference
-*   [Configuration Overview](./configurations) for all available SDK options
+*   [Configuration Overview](../configurations) for all available SDK options

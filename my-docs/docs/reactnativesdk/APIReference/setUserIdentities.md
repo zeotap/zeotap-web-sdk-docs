@@ -468,7 +468,7 @@ setUserIdentities({
 
 ## Set User identities with callbacks
 
-You can also set Identities with Callback function as shown below. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call. 
+You can also set Identities with Callback function as shown below. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call.
 
 ```javascript
 import { setUserIdentities } from 'zeo-collect';

@@ -98,7 +98,7 @@ In case of, default consent (`opt_out`: `false`)  or CMP consent (`use_consent`:
 
 ### Passing Consent with Callback
 
-You can also pass consent with Callback function as shown below. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call. 
+You can also pass consent with a callback function as shown below. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call.
 
 ```javascript
 import { setConsent } from 'zeo-collect';

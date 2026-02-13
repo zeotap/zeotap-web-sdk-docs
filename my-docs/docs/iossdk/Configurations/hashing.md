@@ -116,4 +116,4 @@ When `hashIdentities` is set to `true`, the iOS SDK uses SHA-256 hashing algorit
 ## Related Topics
 
 *   [`setUserIdentities`](../APIReference/setUserIdentities) API Reference
-*   [Configuration Overview](./configurations) for all available SDK options
+*   [Configuration Overview](../configurations) for all available SDK options

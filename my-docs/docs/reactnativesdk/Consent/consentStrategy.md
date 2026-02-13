@@ -148,6 +148,6 @@ setConsent({
 
 ## Related Documentation
 
-- [Consent Configuration Options](../Configurations/configurations) - Detailed configuration options for consent management
+- [Consent Configuration Options](../configurations) - Detailed configuration options for consent management
 - [Set Consent API](../APIReference/setConsent) - API reference for managing user consent
-- [SDK Configuration Guide](../Configurations/configurations) - General SDK configuration guide
+- [SDK Configuration Guide](../configurations) - General SDK configuration guide

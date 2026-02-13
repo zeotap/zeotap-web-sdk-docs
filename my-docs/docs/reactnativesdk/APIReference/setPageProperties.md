@@ -73,7 +73,7 @@ The detailed page properties will be passed in the payload:
 
 ## Set page properties with callbacks
 
-You can also set page properties with Callback function as shown below. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call. 
+You can also set page properties with a callback function as shown below. The data parameter is an object that contains `status` and `message` which helps to debug the status of the function call.
 
 ```javascript
 import { setPageProperties } from 'zeo-collect';

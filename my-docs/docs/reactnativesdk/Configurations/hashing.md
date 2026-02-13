@@ -120,4 +120,4 @@ When `hash_identities` is set to `true`, the React Native SDK uses SHA-256/SHA-1
 ## Related Topics
 
 *   [`setUserIdentities`](../APIReference/setUserIdentities) API Reference
-*   [Configuration Overview](./configurations) for all available SDK options
+*   [Configuration Overview](../configurations) for all available SDK options

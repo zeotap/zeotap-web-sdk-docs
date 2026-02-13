@@ -23,6 +23,7 @@ Use instant events sparingly for critical events only, as they bypass performanc
 ```javascript
 import { setInstantEventProperties } from 'zeo-collect';
 
+setInstantEventNameProperties(eventName, callback)
 setInstantEventProperties(eventName, eventProperties, callback)
 ```
 
@@ -41,10 +42,10 @@ setInstantEventProperties(eventName, eventProperties, callback)
 If you only need to track the event name without additional properties for critical events:
 
 ```javascript
-import { setInstantEventProperties } from 'zeo-collect';
+import { setInstantEventNameProperties } from 'zeo-collect';
 
 // Track instant event with name only
-setInstantEventProperties("app_crash");
+setInstantEventNameProperties("app_crash");
 ```
 
 The payload with instant event name only:
@@ -139,4 +140,4 @@ setInstantEventProperties("payment_failed", {
 
 ---
 
-For more examples and integration patterns, see our [Examples Guide](../Examples/examples).
+For more examples and integration patterns, see our [Examples Guide](../Examples/).

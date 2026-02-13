@@ -6,13 +6,13 @@ description: Send custom events with properties to Zeotap.
 
 # Track Events
 
-The `setEventProperties` method is used to send custom events to Zeotap along with specified event properties and name.
+The `setEventProperties` and `setEventNameProperties` methods are used to send custom events to Zeotap along with specified event properties and name.
 
 ## Syntax
 
 ```javascript
-setEventProperties(eventName, eventProperties, callback)
 setEventNameProperties(eventName, callback)
+setEventProperties(eventName, eventProperties, callback)
 ```
 
 ## Parameters
@@ -157,4 +157,4 @@ Common issues and solutions:
 
 ---
 
-For more examples and advanced usage patterns, see our [Examples Guide](../Examples/examples).
+For more examples and advanced usage patterns, see our [Examples Guide](../Examples/).

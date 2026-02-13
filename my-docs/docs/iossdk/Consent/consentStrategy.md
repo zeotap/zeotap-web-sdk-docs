@@ -146,4 +146,4 @@ By carefully considering your regulatory requirements, technical infrastructure,
 
 - [Consent Configuration Options](../Configurations/consentOptions): Detailed configuration options for consent management
 - [Set Consent API](../APIReference/setConsent): API reference for managing user consent
-- [SDK Configurations](../Configurations/configurations): General SDK configuration guide
+- [SDK Configurations](../configurations): General SDK configuration guide

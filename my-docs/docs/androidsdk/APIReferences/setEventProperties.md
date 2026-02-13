@@ -120,4 +120,4 @@ props.put("price", 29.99);
 
 ---
 
-For more examples and advanced usage patterns, see our [Examples Guide](../Examples/examples).
+For more examples and advanced usage patterns, see our [Examples Guide](../Examples/).
