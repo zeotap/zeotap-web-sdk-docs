@@ -89,7 +89,7 @@ Ensure that the identifier is passed using the same field name as the one used f
 
 ## Retrieving Data on the Client Side Based on Configured “Data to send” for an Interaction
 
-You can access the Interact SDK output in one of three ways:
+You can access the Interact SDK output in one of two ways:
 
 ### 1. Local Storage
 

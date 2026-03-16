@@ -106,3 +106,43 @@ These settings provide supplementary ways to send consent information to Zeotap,
             *   **Value**: The `dataLayer` variable that holds the user's consent status for that key (e.g., `{{dlv_newsletter_consent}}`, `{{dlv_product_recs_consent}}` which might resolve to `true`/`false`, `granted`/`denied`, etc.).
 
 By configuring these additional options, you can achieve a more nuanced and comprehensive approach to managing and communicating user consent through the Zeotap GTM Tag.
+
+## Interact SDK
+![Interact SDK](../../../../static/img/GTM/GTM_InteractSDK.png)
+
+* **Purpose**: Enables loading of the Interact SDK for client-side profile data delivery.
+* **Details**: When enabled, the Interact SDK is automatically loaded and initialized using the same source mapping and Write Key configured for the Web SDK.
+* **Action**: Select this option to activate the Interact SDK via the GTM template.
+
+### Retrieving Data on the Client Side Based on Configured “Data to send” for an Interaction
+
+You can access the Interact SDK output in one of three ways:
+
+#### 1. Local Storage
+
+Stores the selected data in local storage under the Zeotap key `zeoParamsStoreLocal`, which the consuming platform can access on the client side. Below is the example of how to access localStorage using a custom code template in gtm.
+
+```js
+if (typeof Storage !== "undefined") {
+  var targetingParamStr = localStorage.getItem("zeoParamsStoreLocal");
+  if (targetingParamStr) {
+    var targetingParameters = JSON.parse(targetingParamStr);
+    // Use targetingParameters here
+  }
+}
+```
+
+#### 2. Session Storage
+
+Stores the selected data in session storage under the Zeotap key `zeoParamsStoreSession`, which can be accessed by the consuming platform. Similar to local storage, you can push data to session storage and retrieve it as shown below.
+
+
+```js
+if (typeof Storage !== "undefined") {
+  var targetingParamStr = sessionStorage.getItem("zeoParamsStoreSession");
+  if (targetingParamStr) {
+    var targetingParameters = JSON.parse(targetingParamStr);
+    // Use targetingParameters here
+  }
+}
+```
