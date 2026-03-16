@@ -59,8 +59,6 @@ The following Zeotap third-party cookies will be deprecated:
 - ZUC: Legacy custom consent cookie, scheduled for removal.
 :::
 
-## Channel partner 
-
 ## Need Support?
 
 If you have questions or need assistance, contact Zeotap Support or raise a ticket through the support portal.
