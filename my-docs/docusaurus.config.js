@@ -91,6 +91,17 @@ const config = {
         showLastUpdateTime: true
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'adobe',
+        path: 'docs/adobe',
+        routeBasePath: 'adobeLaunch/docs',
+        sidebarPath: './sidebars.js',
+        breadcrumbs: true,
+        showLastUpdateTime: true
+      },
+    ],
     // [
     //   '@docusaurus/plugin-content-blog',
     //   {
@@ -324,10 +335,23 @@ const config = {
                 label: 'Documentation',
                 to: '/gtm/docs/intro',
               },
+              // {
+              //   label: 'Release Notes',
+              //   to: '/gtm/release-notes',
+              // },
+            ],
+          },
+          {
+            title: 'Adobe Launch',
+            items: [
               {
-                label: 'Release Notes',
-                to: '/gtm/release-notes',
+                label: 'Documentation',
+                to: '/adobeLaunch/docs/intro',
               },
+              // {
+              //   label: 'Release Notes',
+              //   to: '/gtm/release-notes',
+              // },
             ],
           },
           {

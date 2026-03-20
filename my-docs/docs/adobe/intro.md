@@ -1,6 +1,6 @@
 ---
 title: Adobe Launch Integration Overview
-sidebar_position: 1
+sidebar_position: 0
 description: Learn how to integrate the Zeotap Collect Tag using Adobe Experience Platform Tags (Adobe Launch) with support for consent, identity tracking, and event capture.
 ---
 

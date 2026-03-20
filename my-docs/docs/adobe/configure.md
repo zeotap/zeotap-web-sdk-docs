@@ -60,6 +60,32 @@ After [installing](/adobeLaunch/docs/installation) the Zeotap Collect Extension 
 
 ![Custom Consent](../../static/img/Adobe/Adobe_CustomConsent.png)
 
+#### Partner Consent Key Map
+
+When **Custom Consent** is selected, you can optionally enable the **Partner Consent Key Map** to control Zeotap's cookie syncing on a per-channel-partner basis. This lets you grant or deny cookie sync consent for individual partners (e.g. Google, Meta) independently, by mapping Zeotap Partner IDs to keys you pass in the **Set Custom Consent** action.
+
+Check the **Partner Consent Key Map** checkbox to expand the mapping editor and add rows:
+
+| Field | Description |
+|---|---|
+| **Channel Partner ID** | The Zeotap Partner ID (e.g. `22`, `35`) |
+| **Consent Key** | The key name you will pass in the Set Custom Consent action (e.g. `google_cookie_sync_consent`) |
+
+The saved mappings are automatically passed to the SDK by the extension during initialization — no manual `init` call is needed. Once configured, include the mapped keys in your **Set Custom Consent** rule action via `_satellite.track`:
+
+```js
+_satellite.track("setConsent", {
+  track: true,
+  cookieSync: true,
+  google_cookie_sync_consent: true,   // cookie sync consented for partner ID "22"
+  meta_cookie_sync_consent: false     // cookie sync denied for partner ID "35"
+});
+```
+
+:::note
+The Partner Consent Key Map section is only visible when **Custom Consent** is selected. Unchecking the checkbox removes all mappings from the saved configuration. See the full [Partner Consent Key Map](/adobeLaunch/docs/partnerConsentKeyMap) reference for details.
+:::
+
 
 ---
 
