@@ -29,6 +29,7 @@ The `consentObject` is a JavaScript object containing key-value pairs. It includ
 #### `cookieSync` (`boolean`)
 - `true`: Allows cookie syncing.
 - `false`: Disables cookie syncing.
+- To control cookie syncing consent per individual channel partner, configure [`partnerConsentKeyMap`](../Configurations/partnerConsentKeyMap) during `init`.
 
 ### Brand Consent Keys
 
