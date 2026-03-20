@@ -35,6 +35,7 @@ Only works for PIIs (cellno, email, loginid) sent using [setUserIdentities](../A
 | [`purposesForCookieSync`](./consentOptions#purposesforcookiesyncing)            | Number[]                                 | TCF Purpose IDs required for cookie syncing. Default depends on TCF version/config (e.g., `[1,3,4]` or `[1,5,6]`).                                             |
 | [`includeTCFString`](./consentOptions#includetcfstring)                     | Boolean                                  | If `true`, the TCF consent string is included in the event payload regardless of the consent mechanism used. No default specified.                              |
 | [`shouldCheckZeotapVendorConsent`](./consentOptions#shouldcheckzeotapvendorconsent)     | Boolean                                  | If `true`, the SDK checks for Zeotap's vendor consent (ID 1469) before checking tracking purposes. Defaults to `false`.                                           |
+| [`partnerConsentKeyMap`](./partnerConsentKeyMap)     | Object                                  | Maps keys in your `setConsent` call to Zeotap Partner IDs to control cookie syncing consent per channel partner (e.g. Google, Meta). Only active in custom consent mode (`useConsent: true`, `checkForCMP: false`). Defaults to `undefined`. |
 
 [Learn more about combined usage of consent options](./consentOptions#combined-usage)
 

@@ -39,5 +39,25 @@ window.zeotap.init("YOUR_WRITE_KEY", {
 
 See detailed guide about [```window.zeotap.setConsent()```](../APIReference/setConsent)
 
-Try out this <a href="https://github.com/zeotap/zeotap-web-sdk-docs/tree/main/my-docs/static/examples/consent/customConsent" target="_blank">example</a>. 
+To control cookie syncing consent per individual channel partner, you can also configure [`partnerConsentKeyMap`](../Configurations/partnerConsentKeyMap) during `init`. This lets you grant or deny Zeotap's cookie syncing for specific partners (e.g. Google, Meta) independently, by mapping partner IDs to keys in your `setConsent` call.
+
+```jsx title="Using partnerConsentKeyMap with Custom Consent"
+window.zeotap.init("YOUR_WRITE_KEY", {
+  useConsent: true,
+  checkForCMP: false,
+  partnerConsentKeyMap: {
+    "22": "google_cookie_sync_consent",
+    "35": "meta_cookie_sync_consent"
+  }
+});
+
+window.zeotap.setConsent({
+  track: true,
+  cookieSync: true,                      // global cookie sync consent
+  google_cookie_sync_consent: true,      // cookie sync consented for partner ID "22"
+  meta_cookie_sync_consent: false        // cookie sync denied for partner ID "35"
+});
+```
+
+Try out this <a href="https://github.com/zeotap/zeotap-web-sdk-docs/tree/main/my-docs/static/examples/consent/customConsent" target="_blank">example</a>.
 

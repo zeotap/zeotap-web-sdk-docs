@@ -14,6 +14,7 @@ Zeotap CDP allows you to collect user web data from different platforms and targ
 - Channel cookies are mapped to the Zeotap cookie and any user identifiers you send.
 - Syncs are fired as image pixels or iframe tags.
 - Web image pixels can sync with only one partner per call; the highest-priority partner is selected.
+- To control cookie syncing consent per individual channel partner, configure [`partnerConsentKeyMap`](../Configurations/partnerConsentKeyMap) during `init`.
 
 
 :::note
