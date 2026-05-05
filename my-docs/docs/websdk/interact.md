@@ -79,10 +79,19 @@ If you're not using the Web SDK, add the Interact SDK directly to the head of yo
 - Replace <a href="./Configurations/writeKey">`<API_KEY>`</a> with your Web Javascript API source key.
 - For identifier lookup, please set the first-party identifier on the page using our <a href="./APIReference/setUserIdentities">`setUserIdentities`</a> method. This identifier will be used for lookups on the Zeotap end. 
 
-:::note
+:::warning Common pitfall — identifier field name mismatch
+The identifier keys you pass to `setUserIdentities` (or in the request body for direct API calls) must match the **source field names** configured for your write_key in the Zeotap dashboard. For example, if your source maps the identifier as `user_id`, you must use exactly `user_id` when calling `setUserIdentities`.
 
-Ensure that the identifier is passed using the same field name as the one used for the API key source mentioned earlier. This consistency is essential for the SDK to recognize the corresponding field in the Zeotap catalogue for lookups. For example, if you're sending a user ID as `user_id` from your server-side source, you must use the same field name when setting the IDs on the page through the `setUserIdentities` method. 
+There is no error returned for unrecognized keys — the SDK silently drops them and the API returns `200 { interactions: [] }`, indistinguishable from "user not found" or "no rules matched."
 
+To verify your identifier is being sent correctly:
+
+1. Open your browser's network panel.
+2. Find the call to `/api/interact/interactions`.
+3. Inspect the `user` object in the request body.
+4. Confirm each key exists in the source field configuration in the Zeotap dashboard.
+
+This is the most common cause of empty results from the Interact SDK.
 :::
 
 ---
@@ -103,6 +112,10 @@ In all four delivery methods, the data object is a flat key-value map:
 ```
 
 The **keys** are the **destination field names** you configure in the "Data to Send" mapping for the interaction. The **values** are the resolved profile attribute values for the current user.
+:::
+
+:::info Convention names
+Throughout this guide you'll see names like `zeoParamsStoreLocal`, `zeoParamsStoreSession`, `zeotapGlobalParams`, and `zeoParamsCallback`. These are **Zeotap conventions** — the recommended values for the corresponding fields in the dashboard, and what most partner integrations (GAM tag templates, Adobe Target wrappers, ad ops scripts) expect by default. They are *not* hardcoded in the SDK. You can configure any names you want in the dashboard, but downstream consumers must be updated to match.
 :::
 
 ### 1. Local Storage
@@ -282,10 +295,8 @@ if (typeof Storage !== "undefined") {
   if (targetingParamStr) {
     var targetingParameters = JSON.parse(targetingParamStr);
 
-    //Please add the below code after the GAM tag
-
-    const targetingParams = JSON.parse(params);
-    if (window.googletag.pubads) {
+    // Place the below code after the GAM tag
+    if (window.googletag && window.googletag.pubads) {
       Object.keys(targetingParameters).forEach((key) => {
         window.googletag.pubads().setTargeting(key, targetingParameters[key]);
       });
@@ -373,6 +384,7 @@ window.targetPageParams = function () {
       }
     }
   }
+  return {};
 };
 
 ```
