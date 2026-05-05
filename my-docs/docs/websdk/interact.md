@@ -12,6 +12,10 @@ This guide explains how to integrate **Zeotap’s Interact SDK** into your websi
 
 The **Interact SDK** enables secure, real-time client-side data delivery based on server-side configuration from your Zeotap account. It facilitates routing user profile data to supported platforms (e.g., Google Ad Manager, Adobe Target).
 
+:::tip Test your Interact SDK integration
+Use the **[Interact SDK test page](https://sdk-docs.web.app/interact-test.html)** to verify your integration end-to-end — send identifiers, trigger interactions, and inspect the resolved profile data returned by the SDK.
+:::
+
 ---
 
 ## Web SDK Already Integrated
@@ -115,7 +119,7 @@ The **keys** are the **destination field names** you configure in the "Data to S
 :::
 
 :::info Convention names
-Throughout this guide you'll see names like `zeoParamsStoreLocal`, `zeoParamsStoreSession`, `zeotapGlobalParams`, and `zeoParamsCallback`. These are **Zeotap conventions** — the recommended values for the corresponding fields in the dashboard, and what most partner integrations (GAM tag templates, Adobe Target wrappers, ad ops scripts) expect by default. They are *not* hardcoded in the SDK. You can configure any names you want in the dashboard, but downstream consumers must be updated to match.
+Throughout this guide you'll see names like `zeoParamsStoreLocal`, `zeoParamsStoreSession`, `zeoParamsGlobal`, and `zeoParamsCallback`. These are **Zeotap conventions** — the recommended values for the corresponding fields in the dashboard, and what most partner integrations (GAM tag templates, Adobe Target wrappers, ad ops scripts) expect by default. They are *not* hardcoded in the SDK. You can configure any names you want in the dashboard, but downstream consumers must be updated to match.
 :::
 
 ### 1. Local Storage
@@ -152,14 +156,14 @@ if (typeof Storage !== "undefined") {
 Writes the resolved data directly onto a named property of the `window` object. You configure the variable name in the Zeotap dashboard when setting up the interaction (under **Data to Send → Set Global Attribute → Global Variable Name**).
 
 ```js
-// Configured variable name in dashboard: "zeotapGlobalParams"
+// Configured variable name in dashboard: "zeoParamsGlobal"
 // After the SDK resolves the interaction, the variable is available as:
-var targetingParameters = window.zeotapGlobalParams;
+var targetingParameters = window.zeoParamsGlobal;
 // { "segment_membership": ["123", "456"], "age_group": "25-34", ... }
 ```
 
 :::note Convention
-Use `zeotapGlobalParams` as the **Global Variable Name** in the dashboard unless you have a specific reason not to. This is the established Zeotap convention — partner integrations (Adobe Target wrappers, GAM tag templates, ad ops scripts) often expect this exact name. Choosing a custom name means downstream consumers must be updated to read from your custom property.
+Use `zeoParamsGlobal` as the **Global Variable Name** in the dashboard unless you have a specific reason not to. This is the established Zeotap convention — partner integrations (Adobe Target wrappers, GAM tag templates, ad ops scripts) often expect this exact name. Choosing a custom name means downstream consumers must be updated to read from your custom property.
 :::
 
 Because the SDK runs asynchronously after your page loads, the variable may not be set at the exact moment your code runs. Use one of these patterns to handle timing:
@@ -184,7 +188,7 @@ function readZeotapGlobal(variableName, callback, maxWaitMs) {
 }
 
 // Usage — wait up to 2 seconds
-readZeotapGlobal("zeotapGlobalParams", function (targetingParameters) {
+readZeotapGlobal("zeoParamsGlobal", function (targetingParameters) {
   // Use targetingParameters here
 }, 2000);
 ```
@@ -193,7 +197,7 @@ readZeotapGlobal("zeotapGlobalParams", function (targetingParameters) {
 
 ```js
 window.addEventListener("load", function () {
-  var targetingParameters = window.zeotapGlobalParams || {};
+  var targetingParameters = window.zeoParamsGlobal || {};
   // Use targetingParameters here
 });
 ```
@@ -314,7 +318,7 @@ The benefit of this solution is that ads will be shown without delay for returni
 
 ### Option 3: Global Variable
 
-If your Google Tag Manager container or GAM setup reads data from a named `window` variable, configure the interaction in Zeotap with **Set Global Attribute** and set the variable name to `zeotapGlobalParams` (the Zeotap convention).
+If your Google Tag Manager container or GAM setup reads data from a named `window` variable, configure the interaction in Zeotap with **Set Global Attribute** and set the variable name to `zeoParamsGlobal` (the Zeotap convention).
 
 ```js
 // Place this after the Zeotap Interact SDK and before the GAM jsTag
@@ -336,11 +340,11 @@ function applyZeotapTargetingFromGlobal(variableName, maxWaitMs) {
   }, interval);
 }
 
-applyZeotapTargetingFromGlobal("zeotapGlobalParams", 2000);
+applyZeotapTargetingFromGlobal("zeoParamsGlobal", 2000);
 ```
 
 :::info
-This approach combines the immediacy of a callback with the simplicity of a global variable. Replace `"zeotapGlobalParams"` with a custom name only if your downstream consumers are already wired to a different property.
+This approach combines the immediacy of a callback with the simplicity of a global variable. Replace `"zeoParamsGlobal"` with a custom name only if your downstream consumers are already wired to a different property.
 :::
 
 ---
@@ -399,12 +403,12 @@ If Adobe Target reads from a named `window` variable, configure the interaction 
 
 ```js
 window.targetPageParams = function () {
-  return window.zeotapGlobalParams || {};
+  return window.zeoParamsGlobal || {};
 };
 ```
 
 :::note
-`window.targetPageParams` is evaluated by at.js when it fires. If `zeotapGlobalParams` is set before at.js runs, you get the data with no delay. Load order matters: place the Zeotap Interact SDK tag before the Adobe at.js tag.
+`window.targetPageParams` is evaluated by at.js when it fires. If `zeoParamsGlobal` is set before at.js runs, you get the data with no delay. Load order matters: place the Zeotap Interact SDK tag before the Adobe at.js tag.
 :::
 
 ---
