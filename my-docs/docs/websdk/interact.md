@@ -139,11 +139,15 @@ if (typeof Storage !== "undefined") {
 Writes the resolved data directly onto a named property of the `window` object. You configure the variable name in the Zeotap dashboard when setting up the interaction (under **Data to Send → Set Global Attribute → Global Variable Name**).
 
 ```js
-// Configured variable name in dashboard: "zeotapTargeting"
+// Configured variable name in dashboard: "zeotapGlobalParams"
 // After the SDK resolves the interaction, the variable is available as:
-var targetingParameters = window.zeotapTargeting;
+var targetingParameters = window.zeotapGlobalParams;
 // { "segment_membership": ["123", "456"], "age_group": "25-34", ... }
 ```
+
+:::note Convention
+Use `zeotapGlobalParams` as the **Global Variable Name** in the dashboard unless you have a specific reason not to. This is the established Zeotap convention — partner integrations (Adobe Target wrappers, GAM tag templates, ad ops scripts) often expect this exact name. Choosing a custom name means downstream consumers must be updated to read from your custom property.
+:::
 
 Because the SDK runs asynchronously after your page loads, the variable may not be set at the exact moment your code runs. Use one of these patterns to handle timing:
 
@@ -167,7 +171,7 @@ function readZeotapGlobal(variableName, callback, maxWaitMs) {
 }
 
 // Usage — wait up to 2 seconds
-readZeotapGlobal("zeotapTargeting", function (targetingParameters) {
+readZeotapGlobal("zeotapGlobalParams", function (targetingParameters) {
   // Use targetingParameters here
 }, 2000);
 ```
@@ -176,7 +180,7 @@ readZeotapGlobal("zeotapTargeting", function (targetingParameters) {
 
 ```js
 window.addEventListener("load", function () {
-  var targetingParameters = window.zeotapTargeting || {};
+  var targetingParameters = window.zeotapGlobalParams || {};
   // Use targetingParameters here
 });
 ```
@@ -299,7 +303,7 @@ The benefit of this solution is that ads will be shown without delay for returni
 
 ### Option 3: Global Variable
 
-If your Google Tag Manager container or GAM setup reads data from a named `window` variable, configure the interaction in Zeotap with **Set Global Attribute** and set the variable name to whatever your tag expects (e.g., `zeotapTargeting`).
+If your Google Tag Manager container or GAM setup reads data from a named `window` variable, configure the interaction in Zeotap with **Set Global Attribute** and set the variable name to `zeotapGlobalParams` (the Zeotap convention).
 
 ```js
 // Place this after the Zeotap Interact SDK and before the GAM jsTag
@@ -321,11 +325,11 @@ function applyZeotapTargetingFromGlobal(variableName, maxWaitMs) {
   }, interval);
 }
 
-applyZeotapTargetingFromGlobal("zeotapTargeting", 2000);
+applyZeotapTargetingFromGlobal("zeotapGlobalParams", 2000);
 ```
 
 :::info
-This approach combines the immediacy of a callback with the simplicity of a global variable. Replace `"zeotapTargeting"` with the exact name you configured in the Zeotap dashboard.
+This approach combines the immediacy of a callback with the simplicity of a global variable. Replace `"zeotapGlobalParams"` with a custom name only if your downstream consumers are already wired to a different property.
 :::
 
 ---
@@ -383,12 +387,12 @@ If Adobe Target reads from a named `window` variable, configure the interaction 
 
 ```js
 window.targetPageParams = function () {
-  return window.zeotapTargeting || {};
+  return window.zeotapGlobalParams || {};
 };
 ```
 
 :::note
-`window.targetPageParams` is evaluated by at.js when it fires. If `zeotapTargeting` is set before at.js runs, you get the data with no delay. Load order matters: place the Zeotap Interact SDK tag before the Adobe at.js tag.
+`window.targetPageParams` is evaluated by at.js when it fires. If `zeotapGlobalParams` is set before at.js runs, you get the data with no delay. Load order matters: place the Zeotap Interact SDK tag before the Adobe at.js tag.
 :::
 
 ---
