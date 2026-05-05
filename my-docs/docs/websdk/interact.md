@@ -12,6 +12,10 @@ This guide explains how to integrate **Zeotap’s Interact SDK** into your websi
 
 The **Interact SDK** enables secure, real-time client-side data delivery based on server-side configuration from your Zeotap account. It facilitates routing user profile data to supported platforms (e.g., Google Ad Manager, Adobe Target).
 
+:::tip Test your Interact SDK integration
+Use the **[Interact SDK test page](https://sdk-docs.web.app/interact-test.html)** to verify your integration end-to-end — send identifiers, trigger interactions, and inspect the resolved profile data returned by the SDK.
+:::
+
 ---
 
 ## Web SDK Already Integrated
@@ -79,17 +83,44 @@ If you're not using the Web SDK, add the Interact SDK directly to the head of yo
 - Replace <a href="./Configurations/writeKey">`<API_KEY>`</a> with your Web Javascript API source key.
 - For identifier lookup, please set the first-party identifier on the page using our <a href="./APIReference/setUserIdentities">`setUserIdentities`</a> method. This identifier will be used for lookups on the Zeotap end. 
 
-:::note
+:::warning Common pitfall — identifier field name mismatch
+The identifier keys you pass to `setUserIdentities` (or in the request body for direct API calls) must match the **source field names** configured for your write_key in the Zeotap dashboard. For example, if your source maps the identifier as `user_id`, you must use exactly `user_id` when calling `setUserIdentities`.
 
-Ensure that the identifier is passed using the same field name as the one used for the API key source mentioned earlier. This consistency is essential for the SDK to recognize the corresponding field in the Zeotap catalogue for lookups. For example, if you're sending a user ID as `user_id` from your server-side source, you must use the same field name when setting the IDs on the page through the `setUserIdentities` method. 
+There is no error returned for unrecognized keys — the SDK silently drops them and the API returns `200 { interactions: [] }`, indistinguishable from "user not found" or "no rules matched."
 
+To verify your identifier is being sent correctly:
+
+1. Open your browser's network panel.
+2. Find the call to `/api/interact/interactions`.
+3. Inspect the `user` object in the request body.
+4. Confirm each key exists in the source field configuration in the Zeotap dashboard.
+
+This is the most common cause of empty results from the Interact SDK.
 :::
 
 ---
 
 ## Retrieving Data on the Client Side Based on Configured “Data to send” for an Interaction
 
-You can access the Interact SDK output in one of two ways:
+When you configure a **Data** type interaction in Zeotap, you choose how the resolved profile data is delivered to the page. There are four delivery methods:
+
+:::note Data structure
+In all four delivery methods, the data object is a flat key-value map:
+
+```json
+{
+  "segment_membership": ["123", "456"],
+  "age_group": "25-34",
+  "custom_score": "high"
+}
+```
+
+The **keys** are the **destination field names** you configure in the "Data to Send" mapping for the interaction. The **values** are the resolved profile attribute values for the current user.
+:::
+
+:::info Convention names
+Throughout this guide you'll see names like `zeoParamsStoreLocal`, `zeoParamsStoreSession`, `zeoParamsGlobal`, and `zeoParamsCallback`. These are **Zeotap conventions** — the recommended values for the corresponding fields in the dashboard, and what most partner integrations (GAM tag templates, Adobe Target wrappers, ad ops scripts) expect by default. They are *not* hardcoded in the SDK. You can configure any names you want in the dashboard, but downstream consumers must be updated to match.
+:::
 
 ### 1. Local Storage
 
@@ -120,7 +151,66 @@ if (typeof Storage !== "undefined") {
 }
 ```
 
-### 3. Callback Function
+### 3. Global Variable
+
+Writes the resolved data directly onto a named property of the `window` object. You configure the variable name in the Zeotap dashboard when setting up the interaction (under **Data to Send → Set Global Attribute → Global Variable Name**).
+
+```js
+// Configured variable name in dashboard: "zeoParamsGlobal"
+// After the SDK resolves the interaction, the variable is available as:
+var targetingParameters = window.zeoParamsGlobal;
+// { "segment_membership": ["123", "456"], "age_group": "25-34", ... }
+```
+
+:::note Convention
+Use `zeoParamsGlobal` as the **Global Variable Name** in the dashboard unless you have a specific reason not to. This is the established Zeotap convention — partner integrations (Adobe Target wrappers, GAM tag templates, ad ops scripts) often expect this exact name. Choosing a custom name means downstream consumers must be updated to read from your custom property.
+:::
+
+Because the SDK runs asynchronously after your page loads, the variable may not be set at the exact moment your code runs. Use one of these patterns to handle timing:
+
+**Wait for the variable (polling):**
+
+```js
+function readZeotapGlobal(variableName, callback, maxWaitMs) {
+  var elapsed = 0;
+  var interval = 100; // check every 100 ms
+  var timer = setInterval(function () {
+    if (window[variableName] !== undefined) {
+      clearInterval(timer);
+      callback(window[variableName]);
+    }
+    elapsed += interval;
+    if (elapsed >= maxWaitMs) {
+      clearInterval(timer);
+      callback({}); // proceed without data
+    }
+  }, interval);
+}
+
+// Usage — wait up to 2 seconds
+readZeotapGlobal("zeoParamsGlobal", function (targetingParameters) {
+  // Use targetingParameters here
+}, 2000);
+```
+
+**Read it inside a DOMContentLoaded or load handler (if your script runs in `<head>`):**
+
+```js
+window.addEventListener("load", function () {
+  var targetingParameters = window.zeoParamsGlobal || {};
+  // Use targetingParameters here
+});
+```
+
+:::tip When to choose Global Variable
+Use this delivery method when a third-party tag or analytics library on your page already reads from a known `window.*` variable by name (e.g., a pre-bid adapter, a tag manager data layer, or a custom analytics object). It requires no function contract — just agree on the variable name.
+:::
+
+:::note
+The variable is set once when the interaction qualifies on page load. It does **not** update reactively. For pages with dynamic content (SPAs), re-trigger the SDK on each navigation event.
+:::
+
+### 4. Callback Function
 
 Passes the selected data to the zeoParamsCallback() function, which can be directly accessed by the consuming platform on the client side.
 
@@ -209,10 +299,8 @@ if (typeof Storage !== "undefined") {
   if (targetingParamStr) {
     var targetingParameters = JSON.parse(targetingParamStr);
 
-    //Please add the below code after the GAM tag
-
-    const targetingParams = JSON.parse(params);
-    if (window.googletag.pubads) {
+    // Place the below code after the GAM tag
+    if (window.googletag && window.googletag.pubads) {
       Object.keys(targetingParameters).forEach((key) => {
         window.googletag.pubads().setTargeting(key, targetingParameters[key]);
       });
@@ -226,6 +314,37 @@ if (typeof Storage !== "undefined") {
 
 The benefit of this solution is that ads will be shown without delay for returning visitors or on subsequent page visits. However, the drawback is that first-time visitors to the landing page may not receive a personalized ad.
 
+:::
+
+### Option 3: Global Variable
+
+If your Google Tag Manager container or GAM setup reads data from a named `window` variable, configure the interaction in Zeotap with **Set Global Attribute** and set the variable name to `zeoParamsGlobal` (the Zeotap convention).
+
+```js
+// Place this after the Zeotap Interact SDK and before the GAM jsTag
+
+function applyZeotapTargetingFromGlobal(variableName, maxWaitMs) {
+  var elapsed = 0;
+  var interval = 100;
+  var timer = setInterval(function () {
+    if (window[variableName] !== undefined || elapsed >= maxWaitMs) {
+      clearInterval(timer);
+      var params = window[variableName] || {};
+      if (window.googletag && window.googletag.pubads) {
+        Object.keys(params).forEach(function (key) {
+          window.googletag.pubads().setTargeting(key, params[key]);
+        });
+      }
+    }
+    elapsed += interval;
+  }, interval);
+}
+
+applyZeotapTargetingFromGlobal("zeoParamsGlobal", 2000);
+```
+
+:::info
+This approach combines the immediacy of a callback with the simplicity of a global variable. Replace `"zeoParamsGlobal"` with a custom name only if your downstream consumers are already wired to a different property.
 :::
 
 ---
@@ -269,12 +388,27 @@ window.targetPageParams = function () {
       }
     }
   }
+  return {};
 };
 
 ```
 
 :::info
 The benefit of this solution is that ads will be shown without delay for returning visitors or on subsequent page visits. However, the drawback is that first-time visitors to the landing page may not receive a personalized ad.
+:::
+
+### Serve with a Global Variable
+
+If Adobe Target reads from a named `window` variable, configure the interaction with **Set Global Attribute**:
+
+```js
+window.targetPageParams = function () {
+  return window.zeoParamsGlobal || {};
+};
+```
+
+:::note
+`window.targetPageParams` is evaluated by at.js when it fires. If `zeoParamsGlobal` is set before at.js runs, you get the data with no delay. Load order matters: place the Zeotap Interact SDK tag before the Adobe at.js tag.
 :::
 
 ---
