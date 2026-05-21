@@ -21,14 +21,14 @@ Identifiers set using `setUserIdentities()` are persisted and automatically incl
 ## Syntax
 
 ```swift
-Collect.getInstance()?.setUserIdentities(_ identities: [String: Any], _ callback: ResponseCallback?)
+Collect.getInstance()?.setUserIdentities(_ identities: [String: String], _ callback: ResponseCallback?)
 ```
 
 ## Parameters
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| identities | [String: Any] | Yes | A dictionary containing user identity key-value pairs |
+| identities | [String: String] | Yes | A dictionary containing user identity key-value pairs |
 | callback | ResponseCallback? | Optional | Callback to handle function response |
 
 ## Understanding Identifier Types
