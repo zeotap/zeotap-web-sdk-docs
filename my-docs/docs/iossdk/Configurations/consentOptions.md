@@ -22,7 +22,7 @@ The Zeotap iOS SDK provides several configuration options within the `CollectOpt
 ```swift
 var collectOptions = CollectOption()
     .writeKey(value: "YOUR_WRITE_KEY")
-    .optOut(value: true)  // Disable all tracking
+    .optout(value: true)  // Disable all tracking
     .build()
 ```
 
