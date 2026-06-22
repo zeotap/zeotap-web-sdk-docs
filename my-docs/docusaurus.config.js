@@ -91,6 +91,17 @@ const config = {
         showLastUpdateTime: true
       },
     ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'adobe',
+        path: 'docs/adobe',
+        routeBasePath: 'adobeLaunch/docs',
+        sidebarPath: './sidebars.js',
+        breadcrumbs: true,
+        showLastUpdateTime: true
+      },
+    ],
     // [
     //   '@docusaurus/plugin-content-blog',
     //   {
