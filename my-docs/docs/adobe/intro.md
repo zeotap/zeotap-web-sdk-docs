@@ -34,7 +34,7 @@ Adobe Launch is a tag management system that helps manage and deploy marketing a
 | **Event Tracking**         | Capture user interactions like page views, product clicks, form submissions, etc. Learn more about [tracking events](/adobeLaunch/docs/Actions/trackEvents). |
 | **User Identity Capture**  | Collect raw or hashed PII and custom IDs like ECID, CRM ID. See our guide on [syncing user identities](/adobeLaunch/docs/Actions/syncUserIdentity). |
 | **Consent Management**     | Supports GDPR/TCF, default opt-in, and custom flows via `Set Custom Consent`. Learn about [setting custom consent](/adobeLaunch/docs/Actions/setCustomConsent). |
-| **Cookie Syncing**         | Enabled by default for Zeotap and partner platforms. |
+| **Cookie Syncing**         | Enabled by default for all partner platforms. To restrict or disable reach out to Zeotap represtative or Zeotap Support. |
 | **ID5 Integration**        | Capture ID5 identifiers for identity enrichment. |
 
 ---
