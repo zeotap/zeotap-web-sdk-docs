@@ -18,6 +18,7 @@ Zeotap CDP allows you to collect user web data from different platforms and targ
 
 
 :::note
+By deafult , the cookie sync will render all partners cookies, to restrict please reach out to Zeotap representative or Zeotap Support.
 Reach out to your Customer Success Manager (CSM) for activation or partner configuration.
 :::
 
