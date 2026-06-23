@@ -335,10 +335,23 @@ const config = {
                 label: 'Documentation',
                 to: '/gtm/docs/intro',
               },
+              // {
+              //   label: 'Release Notes',
+              //   to: '/gtm/release-notes',
+              // },
+            ],
+          },
+          {
+            title: 'Adobe Launch',
+            items: [
               {
-                label: 'Release Notes',
-                to: '/gtm/release-notes',
+                label: 'Documentation',
+                to: '/adobeLaunch/docs/intro',
               },
+              // {
+              //   label: 'Release Notes',
+              //   to: '/gtm/release-notes',
+              // },
             ],
           },
           {

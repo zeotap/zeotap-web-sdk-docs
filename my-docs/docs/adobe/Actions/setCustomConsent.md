@@ -30,7 +30,7 @@ To configure the **Set Custom Consent** action within a rule:
     *   **Configure Consent Properties:** Within the action settings, you will define the consent signals:
         *   **Primary Consent (if ["Custom Consent"](/adobeLaunch/docs/configure#3-custom-consent) method is selected in extension configuration):**
             *   `track` (Boolean): Set to `true` to allow event tracking, `false` to disallow. You'll map this to a Data Element that reflects the user's choice for tracking.
-            *   `cookieSync` (Boolean): Set to `true` to allow cookie syncing, `false` to disallow. Map this to a Data Element reflecting the user's choice for cookie syncing.
+            *   `cookieSync` (Boolean): Set to `true` to allow cookie syncing, `false` to disallow. Map this to a Data Element reflecting the user's choice for cookie syncing. To control cookie syncing per individual channel partner, configure the [Partner Consent Key Map](/adobeLaunch/docs/partnerConsentKeyMap) in the extension settings.
         *   **Brand Consent (always available to send):**
             *   You can add custom key-value pairs to represent specific brand-level consents. These are sent to Zeotap regardless of the primary `track` or `cookieSync` status and are useful for recording granular permissions.
             *   Example:
