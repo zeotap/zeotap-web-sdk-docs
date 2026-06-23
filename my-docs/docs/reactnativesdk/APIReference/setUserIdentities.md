@@ -30,7 +30,7 @@ setUserIdentities(identities, callback)
 
 | Parameter | Type | Required | Description |
 |-----------|------|----------|-------------|
-| identities | Object | Yes | An object containing user identity key-value pairs |
+| identities | Record<string, string> | Yes | An object containing user identity key-value pairs (string keys and string values) |
 | callback | Function | Optional | Callback to handle function response |
 
 ## Understanding Identifier Types
