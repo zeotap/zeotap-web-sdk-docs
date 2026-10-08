@@ -16,7 +16,7 @@ Obtain the write key from the created source. [How to obtain a write key?](./Con
 Add the following line to your `Podfile`:
 
 ```ruby
-pod 'ZeotapCollect', '~> 1.3.10'
+pod 'ZeotapCollect', '~> 1.3.11'
 ```
 
 Then run:
