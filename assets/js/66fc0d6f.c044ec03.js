@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[826],{2127:e=>{e.exports=JSON.parse('{"tags":[{"label":"release","permalink":"/iossdk/release-notes/tags/release","count":12}]}')}}]);
